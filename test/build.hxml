@@ -1,0 +1,5 @@
+-main DeveloperSpec
+-cp .
+-lib buddy
+-cp ../src/
+--interp
