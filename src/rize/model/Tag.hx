@@ -1,4 +1,4 @@
-package rize;
+package rize.model;
 
 class Tag{
 	public var title:String;

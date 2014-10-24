@@ -1,2 +1,4 @@
--cp src 
-rize.TagTable
+-cp src
+-lib Mage
+-main rize.Main
+-js export/main.js

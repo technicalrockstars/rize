@@ -1,6 +1,6 @@
 package ;
 
-import rize.*;
+import rize.model.*;
 
 import buddy.Buddy;
 import buddy.BuddySuite;

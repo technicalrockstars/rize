@@ -1,4 +1,4 @@
-package rize;
+package rize.model;
 
 
 enum State{
@@ -11,11 +11,11 @@ class Kanban{
 	public var start:Date;
 	public var end:Date;
 	public var title:String;
-	public var auth(default,default):rize.Developer;
+	public var auth(default,default):rize.model.Developer;
 	public var entry:Date;
 	public var state:State;
 
-	public function new(title:String,?auth:rize.Developer){
+	public function new(title:String,?auth:rize.model.Developer){
 		this.entry = Date.now();
 		this.title = title;
 		this.state = State.Regist;
