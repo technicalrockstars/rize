@@ -48,4 +48,22 @@ class Kanban{
 		return DateTools.hours(Math.abs( start.getTime()-end.getTime() ) );
 	}
 
+	public function stateString(){
+		if(state == State.Regist){
+			return "Regist";
+		}else if(state == State.Finish){
+			return "Finish";
+		}else if(state == State.Work){
+			return "Work";
+		}
+		return "Err";
+	}
+	public function toNextState(){
+		if(state == State.Regist){
+			state = State.Work;
+		}else{
+			state = State.Finish;
+		}
+	}
+
 }

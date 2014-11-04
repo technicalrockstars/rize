@@ -1,4 +1,5 @@
 -cp src
 -lib Mage
+-lib milkcocoa-hx
 -main rize.Main
 -js export/main.js
