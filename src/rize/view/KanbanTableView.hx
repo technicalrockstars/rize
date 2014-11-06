@@ -18,8 +18,9 @@ class KanbanTableView{}
 
 <div>
 	<ul>
-		<li>{{name}}</li>
-		<li>{{state}}</li>
+		title :: <bar>{{name}}</bar><br>
+		state :: <bar>{{state}}</bar><br>
+		auth  :: <bar>{{authName}}</bar><br>
 		<input type=button mage-var=removeButton value=remove>
 	</ul>
 </div>"

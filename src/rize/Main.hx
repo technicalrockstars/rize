@@ -20,7 +20,7 @@ class Main{
 			kanbanCollection.loadData(function(kanbanArray){
 				trace("response data size ::"+kanbanArray.length);
 				for(kanban in kanbanArray){
-					var kanbanView = new KanbanView({name:kanban.title, state:kanban.stateString()});
+					var kanbanView = new KanbanView({name:kanban.title, state:kanban.stateString(), authName:kanban.auth.name});
 					kanbanView.id = kanban.id;
 					kanbanView.removeButton.addEventListener("click",function(e){
 						kanbanCollection.remove(kanbanView.id,function(){
