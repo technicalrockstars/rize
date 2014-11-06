@@ -5,8 +5,10 @@ package rize.view;
 "package rize.view
 
 <div>
+	input new kanban name:<input type=text mage-var=input>
+	<input type=button mage-var=makeButton value=make>
+	<input type=button mage-var=reloadButton value=reload>
 	<div mage-var=children></div>
-	<input type=text mage-var=input >
 </div>"
 ))
 class KanbanTableView{}
@@ -18,8 +20,10 @@ class KanbanTableView{}
 	<ul>
 		<li>{{name}}</li>
 		<li>{{state}}</li>
-		<button type=submit name=b mage-var=button >test</button>
+		<input type=button mage-var=removeButton value=remove>
 	</ul>
 </div>"
 ))
-class KanbanView{}
+class KanbanView{
+	public var id : Int;
+}

@@ -5,6 +5,7 @@ enum State{
 	Regist;
 	Work;
 	Finish;
+	Undifine;
 }
 
 class Kanban{
@@ -14,6 +15,19 @@ class Kanban{
 	public var auth(default,default):rize.model.Developer;
 	public var entry:Date;
 	public var state:State;
+	public var id:Int;
+
+	public static function restore(data:Dynamic){
+		trace(data);
+		var res = new Kanban(data.title);
+		res.start = data.start;
+		res.end = data.end;
+		res.auth = data.auth;
+		res.entry = data.entry;
+		res.state = stateInt(data.state[0]);
+		res.id = data.id;
+		return res;
+	}
 
 	public function new(title:String,?auth:rize.model.Developer){
 		this.entry = Date.now();
@@ -34,9 +48,9 @@ class Kanban{
 
 	public function finish()
 		return if(this.state == State.Work){
-				this.end = Date.now();
-				this.state = State.Finish;
-				true;
+			this.end = Date.now();
+			this.state = State.Finish;
+			true;
 		}else false;
 	
 
@@ -58,6 +72,18 @@ class Kanban{
 		}
 		return "Err";
 	}
+	
+	public static function stateInt(s:String){
+		if(s == "Regist"){
+			return State.Regist;
+		}else if(s == "Finish"){
+			return State.Finish;
+		}else if(s == "Work"){
+			return State.Work;
+		}
+		return State.Undifine;
+	}
+
 	public function toNextState(){
 		if(state == State.Regist){
 			state = State.Work;
