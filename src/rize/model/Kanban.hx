@@ -15,14 +15,14 @@ class Kanban{
 	public var auth:rize.model.Developer;
 	public var entry:Date;
 	public var state:State;
-	public var id:Int;
+	public var id:String;
 
 	public static function restore(data:Dynamic){
 		trace(data);
 		var res = new Kanban(data.title);
 		res.start = data.start;
 		res.end = data.end;
-		res.auth = data.auth;
+		res.auth = new rize.model.Developer(data.auth.name);
 		res.entry = data.entry;
 		res.state = stateInt(data.state[0]);
 		res.id = data.id;
@@ -90,6 +90,22 @@ class Kanban{
 			state = State.Work;
 		}else{
 			state = State.Finish;
+		}
+	}
+
+	public function getStartString(){
+		if(start == null){
+			return "undefine";
+		}else{
+			return Std.string(start);
+		}
+	}
+
+	public function getEndString(){
+		if (end == null){
+			return "undefine";
+		}else{
+			return Std.string(end);
 		}
 	}
 

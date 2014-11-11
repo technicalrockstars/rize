@@ -18,13 +18,31 @@ class KanbanTableView{}
 
 <div>
 	<ul>
-		title :: <bar>{{name}}</bar><br>
-		state :: <bar>{{state}}</bar><br>
-		auth  :: <bar>{{authName}}</bar><br>
+		title :: <bar>{{name}}</bar>
+			<input type=text mage-var=changeTitleText>
+			<input type=button mage-var=changeTitleButton value=changeTitle>
+		<br>
+
+		state :: <bar>{{state}}</bar>
+			<input type=button mage-var=nextStateButton value=next>
+		<br>
+		
+		auth  :: <bar>{{authName}}</bar> 
+			<input type=text mage-var=changeAuthText>
+			<input type=button mage-var=changeAuthButton value=changeAuth >
+		<br> 
+		
+		start :: <bar>{{startDate}}</bar>
+			<input type=button mage-var=setStartDate value=setDate>
+		<br>
+
+		end   :: <bar>{{endDate}}</bar>
+			<input type=button mage-var=setEndDate value=setDate>
+		<br>
 		<input type=button mage-var=removeButton value=remove>
 	</ul>
 </div>"
 ))
 class KanbanView{
-	public var id : Int;
+	public var id : String;
 }

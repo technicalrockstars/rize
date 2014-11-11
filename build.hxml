@@ -3,3 +3,4 @@
 -lib milkcocoa-hx
 -main rize.Main
 -js export/main.js
+-dce no
