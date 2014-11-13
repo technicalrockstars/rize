@@ -93,6 +93,14 @@ class Kanban{
 		}
 	}
 
+	public function getEntryString(){
+		if(entry == null){
+			return "undefine";
+		}else{
+			return Std.string(entry);
+		}
+	}
+
 	public function getStartString(){
 		if(start == null){
 			return "undefine";

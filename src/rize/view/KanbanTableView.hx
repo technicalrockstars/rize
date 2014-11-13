@@ -18,9 +18,12 @@ class KanbanTableView{}
 
 <div>
 	<ul>
-		title :: <bar>{{name}}</bar>
+		title :: <bar>{{title}}</bar>
 			<input type=text mage-var=changeTitleText>
 			<input type=button mage-var=changeTitleButton value=changeTitle>
+		<br>
+
+		entry :: <bar>{{entry}}</bar>
 		<br>
 
 		state :: <bar>{{state}}</bar>
