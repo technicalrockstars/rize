@@ -24,7 +24,18 @@ class DeveloperTableView{}
 			<input type=text mage-var=changeNameText>
 			<input type=button mage-var=changeNameButton value=changeTitle>
 		<br>
-		kanban :: <div mage-var=kanban> </div>
+		new kanban :: 
+			<input type=text mage-var=newKanbanText>
+			<input type=button mage-var=newKanbanButton> 
+		<br>
+		kanbans ::<div mage-var=kanban></div>
+
+		new tag ::
+			<input type=text mage-var=newTagText>
+			<input type=button mage-var=newTagButton>
+		<br>
+
+		tags :: <div mage-var=tag></div>
 		<input type=button mage-var=removeButton value=remove>
 	</ul>
 </div>"

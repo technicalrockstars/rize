@@ -26,6 +26,7 @@ class DeveloperTableController{
 				});
 				developerView.id = dev.id;
 
+
 				developerView.changeNameButton.addEventListener("click",function(e){
 					developerCollection.change(developerView.id,{name:developerView.changeNameText.value},function(){
 						js.Browser.window.location.reload();
