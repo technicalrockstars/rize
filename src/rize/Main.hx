@@ -15,12 +15,16 @@ class Main{
 		js.Browser.window.addEventListener("load",function(e){
 
 			var messageDataStore = milkcocoa.dataStore('message');
-
-			var kanbanTableController = new KanbanTableController(milkcocoa);
-			js.Browser.document.body.appendChild(kanbanTableController.makeView());
 			
 			var developerTableController = new DeveloperTableController(milkcocoa);
 			js.Browser.document.body.appendChild(developerTableController.makeView());
+			
+			var tagTableController = new TagTableController(milkcocoa);
+			js.Browser.document.body.appendChild(tagTableController.makeView());
+			
+			var kanbanTableController = new KanbanTableController(milkcocoa);
+			js.Browser.document.body.appendChild(kanbanTableController.makeView());
+			
 			
 		});
 	}

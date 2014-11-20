@@ -11,6 +11,7 @@ class KanbanCollection {
 		cocoa = c;
 		kanbanDataStore = cocoa.dataStore("kanbanCollection");
 	}
+
 	public function push(k:rize.model.Kanban,callback){
 		if(k.id != null) kanbanDataStore.remove(k.id);
 		kanbanDataStore.push({
@@ -23,6 +24,7 @@ class KanbanCollection {
 		});
 		callback();
 	}
+	
 	public function loadData(callback){
 		data = new Array<rize.model.Kanban>();
 		var query = kanbanDataStore.query();
@@ -33,10 +35,6 @@ class KanbanCollection {
 			}
 			callback(data);
 		});
-	}
-
-	public function getData(){
-		return data;
 	}
 
 	public function remove(id:Dynamic,callback){

@@ -14,22 +14,34 @@ class DeveloperTableController{
 
 	public function makeView(){
 		var developerTableView = new DeveloperTableView();
-		var developerTable = new DeveloperTable(milkcocoa);
+		var developerCollection = new DeveloperCollection(milkcocoa);
 
-		developerTable.loadData(function(data:Array<rize.model.Developer>){
+		developerCollection.loadData(function(data:Array<rize.model.Developer>){
 			trace("developer table size ::" + data.length);
 			for(dev in data){
 				var developerView = new DeveloperView({
 					name:dev.name
 				});
 				developerView.id = dev.id;
+
+				developerView.changeNameButton.addEventListener("click",function(e){
+					developerCollection.change(developerView.id,{name:developerView.changeNameText.value},function(){
+						js.Browser.window.location.reload();
+					});
+				});
+				developerTableView.children.appendChild(developerView.nodes[0]);
 			}
-			
+
 			developerTableView.devMakeButton.addEventListener("click",function(e){
-				developerTable.push(new Developer(developerTableView.input.value),function(){
+				developerCollection.push(new Developer(developerTableView.input.value),function(){
 					js.Browser.window.location.reload();
 				});
 			});
+
+			developerTableView.reloadButton.addEventListener("click",function(e){
+				js.Browser.window.location.reload();
+			});
+
 		});
 		return developerTableView.nodes[0];
 

@@ -1,6 +1,7 @@
 package rize.model;
 
 class Tag{
+	public var id:String;
 	public var title:String;
 	public function new(title:String){
 		this.title = title;

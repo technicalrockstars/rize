@@ -21,8 +21,8 @@ class DeveloperTableView{}
 <div>
 	<ul>
 		name :: <bar>{{name}}</bar>
-			<input type=text mage-var=changeTitleText>
-			<input type=button mage-var=changeTitleButton value=changeTitle>
+			<input type=text mage-var=changeNameText>
+			<input type=button mage-var=changeNameButton value=changeTitle>
 		<br>
 		<input type=button mage-var=removeButton value=remove>
 	</ul>
