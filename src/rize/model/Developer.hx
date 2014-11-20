@@ -27,7 +27,15 @@ class Developer{
 		tags.push(tag.id);
 	}
 
+	public function removeTag(id:String){
+		tags.remove(id);
+	}
+
 	public function addKanban(kanban:rize.model.Kanban){
 		kanbans.push(kanban.id);
+	}
+
+	public function removeKanban(id:String){
+		kanbans.remove(id);
 	}
 }

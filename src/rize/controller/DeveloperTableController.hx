@@ -15,6 +15,8 @@ class DeveloperTableController{
 	public function makeView(){
 		var developerTableView = new DeveloperTableView();
 		var developerCollection = new DeveloperCollection(milkcocoa);
+		var tagCollection = new rize.model.TagCollection(milkcocoa);
+		var kanbanCollection = new rize.model.KanbanCollection(milkcocoa);
 
 		developerCollection.loadData(function(data:Array<rize.model.Developer>){
 			trace("developer table size ::" + data.length);

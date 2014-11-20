@@ -6,7 +6,9 @@ class Tag{
 	public function new(title:String){
 		this.title = title;
 	}
-	public static function restore(data:{title:String}){
-		return new Tag(data.title);
+	public static function restore(data:{title:String,id:String}){
+		var res = new Tag(data.title);
+		res.id = data.id;
+		return res;
 	}
 }

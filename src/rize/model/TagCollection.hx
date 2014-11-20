@@ -41,7 +41,7 @@ class TagCollection{
 		callback();
 	}
 
-	public function delete(id:String,callback){
+	public function remove(id:String,callback){
 		tagDataStore.remove(id);
 		callback();
 	}

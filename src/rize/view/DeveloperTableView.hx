@@ -24,6 +24,7 @@ class DeveloperTableView{}
 			<input type=text mage-var=changeNameText>
 			<input type=button mage-var=changeNameButton value=changeTitle>
 		<br>
+		kanban :: <div mage-var=kanban> </div>
 		<input type=button mage-var=removeButton value=remove>
 	</ul>
 </div>"

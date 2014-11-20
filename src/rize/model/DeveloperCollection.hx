@@ -26,15 +26,18 @@ class DeveloperCollection{
 	}
 
 	public function push(dev:rize.model.Developer,callback){
-		trace(dev);
-		if(dev.id != null) developerDataStore.remove(dev.id);
-		developerDataStore.push({
+		var tmp = {
 			name : dev.name,
 			tags : dev.tags,
 			kanbans : dev.kanbans
-		});
-		loadData(function(data){});
-		callback();
+		};
+		if(dev.id != null) {
+			change(dev.id,tmp,callback);
+		}else{
+			developerDataStore.push(tmp);
+			loadData(function(data){});
+			callback();
+		}
 	}
 
 	public function remove(id:String,callback){

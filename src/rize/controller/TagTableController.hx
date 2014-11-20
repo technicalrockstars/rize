@@ -22,6 +22,13 @@ class TagTableController{
 					title : tag.title
 				});
 				tagView.id = tag.id;
+				
+				tagView.removeButton.addEventListener("click",function(e){
+					tagCollection.remove(tagView.id,function(){
+						js.Browser.window.location.reload();
+					});
+				});
+
 				tagTableView.children.appendChild(tagView.nodes[0]);
 			}
 		});
