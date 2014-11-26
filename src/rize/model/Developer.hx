@@ -6,8 +6,9 @@ class Developer{
 	public var tags:Array<String>;
 	public var kanbans:Array<String>;
 
-	public static function restore(d:{name:String,tags:Array<Dynamic>,kanbans:Array<Dynamic>}){
+	public static function restore(d:{name:String,id:String,tags:Array<Dynamic>,kanbans:Array<Dynamic>}){
 		var res = new Developer(d.name);
+		res.id = d.id;
 		res.tags = new Array<String>();
 		if(d.tags != null) for(i in 0...d.tags.length){
 			res.tags.push(d.tags[i]);

@@ -45,4 +45,15 @@ class TagCollection{
 		tagDataStore.remove(id);
 		callback();
 	}
+
+	public function find(title:String,callback:Array<Dynamic>->Void){
+		tagDataStore.query({title:title}).done(function(data){
+			callback(data);
+		});
+	}
+	public function findById(id:String,callback:Array<Dynamic>->Void){
+		tagDataStore.query({id:id}).done(function(data){
+			callback(data);
+		});
+	}
 }

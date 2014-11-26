@@ -43,3 +43,4 @@ class DeveloperTableView{}
 class DeveloperView{
 	public var id : String;
 }
+

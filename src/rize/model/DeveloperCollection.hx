@@ -55,4 +55,15 @@ class DeveloperCollection{
 		developerDataStore.set(id,change);
 		callback();
 	}
+
+	public function addTag(id:String,tag:rize.model.Tag){
+		var tmp = data.filter(function(d:rize.model.Developer){
+			return d.id == id;
+		});
+		for(i in tmp){
+			var index = data.indexOf(i);
+			data[index].addTag(tag);
+			change(data[index].id,{tags:data[index].tags},function(){});
+		}
+	}
 }
