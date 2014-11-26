@@ -26,14 +26,11 @@ class DeveloperTableController{
 					name:dev.name
 				});
 				developerView.id = dev.id;
-
+				var tagTableController = new rize.controller.TagTableController(milkcocoa);
 				for(tagId in dev.tags){
 					tagCollection.findById(tagId,function(tags){
 						for(t in tags){
-							var tagView = new TagView({title:t.title});
-							tagView.id = t.id;
-							trace(tagView.id);
-							developerView.tag.appendChild(tagView.nodes[0]);
+							developerView.tag.appendChild(tagTableController.makeTagView(t));
 						}
 					});
 				}
