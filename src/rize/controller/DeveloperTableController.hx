@@ -47,6 +47,7 @@ class DeveloperTableController{
 			name:dev.name
 		});
 		developerView.id = dev.id;
+		
 		var tagTableController = new rize.controller.TagTableController(milkcocoa);
 		for(tagId in dev.tags){
 			tagCollection.findById(tagId,function(tags){

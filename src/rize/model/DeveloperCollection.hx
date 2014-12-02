@@ -66,4 +66,16 @@ class DeveloperCollection{
 			change(data[index].id,{tags:data[index].tags},function(){});
 		}
 	}
+
+	public function removeTag(tagID:String,callback){
+		loadData(function(data){
+			for(i in data){
+				trace(i);
+				i.removeTag(tagID);
+				trace(i);
+				push(i,function()return);
+			}
+			callback();
+		});
+	}
 }

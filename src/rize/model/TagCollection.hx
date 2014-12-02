@@ -12,7 +12,6 @@ class TagCollection{
 		tagDataStore = cocoa.dataStore("tagCollection");
 	}
 
-
 	public function loadData(callback:Array<rize.model.Tag>->Void){
 		data = new Array<rize.model.Tag>();
 		var query = tagDataStore.query();
@@ -24,6 +23,7 @@ class TagCollection{
 			callback(data);
 		});
 	}
+
 	public function push(tag:rize.model.Tag,callback){
 		var c = {
 			title : tag.title
@@ -43,7 +43,9 @@ class TagCollection{
 
 	public function remove(id:String,callback){
 		tagDataStore.remove(id);
-		callback();
+		var developerCollection = new rize.model.DeveloperCollection(cocoa);
+		developerCollection.removeTag(id,callback);
+
 	}
 
 	public function find(title:String,callback:Array<Dynamic>->Void){
@@ -51,6 +53,7 @@ class TagCollection{
 			callback(data);
 		});
 	}
+	
 	public function findById(id:String,callback:Array<Dynamic>->Void){
 		tagDataStore.query({id:id}).done(function(data){
 			callback(data);
