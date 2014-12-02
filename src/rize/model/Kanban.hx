@@ -12,7 +12,7 @@ class Kanban{
 	public var start:Date;
 	public var end:Date;
 	public var title:String;
-	public var auth:rize.model.Developer;
+	public var auth:String;
 	public var entry:Date;
 	public var state:State;
 	public var id:String;
@@ -22,7 +22,7 @@ class Kanban{
 		var res = new Kanban(data.title);
 		res.start = data.start;
 		res.end = data.end;
-		res.auth = new rize.model.Developer(data.auth.name);
+		res.auth = data.auth;
 		res.entry = data.entry;
 		res.state = stateInt(data.state[0]);
 		res.id = data.id;
@@ -33,7 +33,7 @@ class Kanban{
 		this.entry = Date.now();
 		this.title = title;
 		this.state = State.Regist;
-		this.auth  = new rize.model.Developer("undefine");
+		this.auth  = "undefine";
 	}
 
 	public function work()

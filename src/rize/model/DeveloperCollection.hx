@@ -78,4 +78,40 @@ class DeveloperCollection{
 			callback();
 		});
 	}
+
+	public function addKanban(id:String,kanban:rize.model.Kanban){
+		var tmp = data.filter(function(d:rize.model.Developer){
+			return d.id == id;
+		});
+		for(i in tmp){
+			var index = data.indexOf(i);
+			data[index].addKanban(kanban);
+			change(data[index].id,{kanbans:data[index].kanbans},function(){});
+		}
+	}
+
+	public function removeKanban(kanbanID:String,callback){
+		loadData(function(data){
+			for(i in data){
+				trace(i);
+				i.removeKanban(kanbanID);
+				trace(i);
+				push(i,function()return);
+			}
+			callback();
+		});
+	}
+
+	public function findName(name:String,callback:Array<String>->Void){
+		loadData(function(data){
+			var tmp = data.filter(function(d){
+				return d.name == name;
+			});
+			var res = new Array<String>();
+			for(i in tmp){
+				res.push(i.id);
+			}
+			callback(res);
+		});
+	}
 }

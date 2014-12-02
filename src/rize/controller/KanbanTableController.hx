@@ -50,7 +50,7 @@ class KanbanTableController{
 			startDate : kanban.getStartString(),
 			endDate : kanban.getEndString(),
 			title:kanban.title,
-			authName:kanban.auth.name,
+			authName:kanban.auth,
 			entry:kanban.getEntryString(),
 			state:kanban.stateString(),
 		});
@@ -69,8 +69,11 @@ class KanbanTableController{
 		});
 				
 		kanbanView.changeAuthButton.addEventListener("click",function(e){
-			kanbanCollection.changeAuth(kanbanView.id,new rize.model.Developer(kanbanView.changeAuthText.value),function(){
-				js.Browser.window.location.reload();
+			var developerCollection = new rize.model.DeveloperCollection(milkcocoa);
+			developerCollection.findName(kanbanView.changeAuthText.value,function(id){
+				kanbanCollection.changeAuth(kanbanView.id,id[0],function(){
+					js.Browser.window.location.reload();
+				});
 			});
 		});
 				

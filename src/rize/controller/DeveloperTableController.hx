@@ -1,5 +1,7 @@
 package rize.controller;
 
+import rize.controller.KanbanTableController;
+
 import rize.model.*;
 import rize.view.KanbanTableView;
 import rize.view.DeveloperTableView;
@@ -57,8 +59,27 @@ class DeveloperTableController{
 			});
 		}
 
+		var kanbanTablecontroller = new rize.controller.KanbanTableController(milkcocoa);
+
+		for(kanbanID in dev.kanbans){
+			kanbanCollection.findById(kanbanID,function(kanbans){
+				for(k in kanbans){
+					developerView.kanban.appendChild(kanbanTablecontroller.makeKanbanView(k));
+				}
+			});
+		}
+
 		developerView.changeNameButton.addEventListener("click",function(e){
 			developerCollection.change(developerView.id,{name:developerView.changeNameText.value},function(){
+				js.Browser.window.location.reload();
+			});
+		});
+
+		developerView.newKanbanButton.addEventListener("click",function(e){
+			kanbanCollection.find(developerView.newKanbanText.value,function(data:Array<Dynamic>){
+				for(d in data){
+					developerCollection.addKanban(developerView.id,d);
+				}
 				js.Browser.window.location.reload();
 			});
 		});
