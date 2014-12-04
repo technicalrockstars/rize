@@ -49,14 +49,10 @@ class TagCollection{
 	}
 
 	public function find(title:String,callback:Array<Dynamic>->Void){
-		tagDataStore.query({title:title}).done(function(data){
-			callback(data);
-		});
+		tagDataStore.query({title:title}).done(callback);
 	}
 	
 	public function findById(id:String,callback:Array<Dynamic>->Void){
-		tagDataStore.query({id:id}).done(function(data){
-			callback(data);
-		});
+		tagDataStore.query({id:id}).done(callback);
 	}
 }

@@ -55,44 +55,36 @@ class KanbanTableController{
 			state:kanban.stateString(),
 		});
 		kanbanView.id = kanban.id;
-				
+		
+		var reload = function(){
+			js.Browser.window.location.reload();
+		};
+
 		kanbanView.changeTitleButton.addEventListener("click",function(e){
-			kanbanCollection.change(kanbanView.id,{title:kanbanView.changeTitleText.value},function(){
-				js.Browser.window.location.reload();
-			});
+			kanbanCollection.change(kanbanView.id,{title:kanbanView.changeTitleText.value},reload);
 		});
 				
 		kanbanView.nextStateButton.addEventListener("click",function(e){
-			kanbanCollection.changeState(kanbanView.id,function(){
-				js.Browser.window.location.reload();
-			});
+			kanbanCollection.changeState(kanbanView.id,reload);
 		});
 				
 		kanbanView.changeAuthButton.addEventListener("click",function(e){
 			var developerCollection = new rize.model.DeveloperCollection(milkcocoa);
 			developerCollection.findName(kanbanView.changeAuthText.value,function(id){
-				kanbanCollection.changeAuth(kanbanView.id,id[0],function(){
-					js.Browser.window.location.reload();
-				});
+				kanbanCollection.changeAuth(kanbanView.id,id[0],reload);
 			});
 		});
 				
 		kanbanView.setStartDate.addEventListener("click",function(e){
-			kanbanCollection.change(kanbanView.id,{start:Date.now()},function(){
-				js.Browser.window.location.reload();
-			});
+			kanbanCollection.change(kanbanView.id,{start:Date.now()},reload);
 		});
 
 		kanbanView.setEndDate.addEventListener("click",function(e){
-			kanbanCollection.change(kanbanView.id,{end:Date.now()},function(){
-				js.Browser.window.location.reload();
-			});
+			kanbanCollection.change(kanbanView.id,{end:Date.now()},reload);
 		});
 
 		kanbanView.removeButton.addEventListener("click",function(e){
-			kanbanCollection.remove(kanbanView.id,function(){
-				js.Browser.window.location.reload();
-			});
+			kanbanCollection.remove(kanbanView.id,reload);
 		});
 		return kanbanView.nodes[0];
 	}

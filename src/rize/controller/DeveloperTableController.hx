@@ -69,10 +69,11 @@ class DeveloperTableController{
 			});
 		}
 
+		var reload = function(){
+			js.Browser.window.location.reload();
+		};
 		developerView.changeNameButton.addEventListener("click",function(e){
-			developerCollection.change(developerView.id,{name:developerView.changeNameText.value},function(){
-				js.Browser.window.location.reload();
-			});
+			developerCollection.change(developerView.id,{name:developerView.changeNameText.value},reload);
 		});
 
 		developerView.newKanbanButton.addEventListener("click",function(e){
@@ -80,7 +81,7 @@ class DeveloperTableController{
 				for(d in data){
 					developerCollection.addKanban(developerView.id,d);
 				}
-				js.Browser.window.location.reload();
+				reload();
 			});
 		});
 
@@ -89,14 +90,12 @@ class DeveloperTableController{
 				for(d in data){
 					developerCollection.addTag(developerView.id,d);
 				}
-				js.Browser.window.location.reload();
+				reload();
 			});
 		});
 
 		developerView.removeButton.addEventListener("click",function(e){
-			developerCollection.remove(developerView.id,function(){
-				js.Browser.window.location.reload();
-			});
+			developerCollection.remove(developerView.id,reload);
 		});
 
 		return developerView.nodes[0];

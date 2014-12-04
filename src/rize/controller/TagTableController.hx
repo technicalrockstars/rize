@@ -7,6 +7,7 @@ import mlkcca.MilkCocoa;
 class TagTableController{
 	var milkcocoa : MilkCocoa;
 	var tagCollection : rize.model.TagCollection;
+
 	public function new (mlk:MilkCocoa){
 		milkcocoa = mlk;
 		tagCollection = new TagCollection(milkcocoa);
@@ -22,24 +23,19 @@ class TagTableController{
 				tagTableView.children.appendChild(makeTagView(tag));
 			}
 		});
-
-		tagTableView.input.addEventListener("change",function(e){
+		var makeNewTagFunction = function(e){
 			var tag = new Tag(tagTableView.input.value);
 			tagCollection.push(tag,function(){
 				js.Browser.window.location.reload();
 			});
-		});
+		};
+		tagTableView.input.addEventListener("change",makeNewTagFunction);
+		tagTableView.makeButton.addEventListener("click",makeNewTagFunction);
 
-		tagTableView.makeButton.addEventListener("click",function(e){
-			var tag = new Tag(tagTableView.input.value);
-			tagCollection.push(tag,function(){
-				js.Browser.window.location.reload();
-			});
-		});
-
-		tagTableView.reloadButton.addEventListener("click",function(e){
+		var reloadFunction = function(e){
 			js.Browser.window.location.reload();
-		});
+		};
+		tagTableView.reloadButton.addEventListener("click",reloadFunction);
 
 		return tagTableView.nodes[0];
 	}
