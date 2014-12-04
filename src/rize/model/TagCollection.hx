@@ -45,7 +45,6 @@ class TagCollection{
 		tagDataStore.remove(id);
 		var developerCollection = new rize.model.DeveloperCollection(cocoa);
 		developerCollection.removeTag(id,callback);
-
 	}
 
 	public function find(title:String,callback:Array<Dynamic>->Void){

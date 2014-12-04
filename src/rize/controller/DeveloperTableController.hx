@@ -50,11 +50,24 @@ class DeveloperTableController{
 		});
 		developerView.id = dev.id;
 		
+		var reload = function(){
+			js.Browser.window.location.reload();
+		};
+
 		var tagTableController = new rize.controller.TagTableController(milkcocoa);
 		for(tagId in dev.tags){
 			tagCollection.findById(tagId,function(tags){
 				for(t in tags){
-					developerView.tag.appendChild(tagTableController.makeTagView(t));
+					var childView = new ChildView();
+					childView.id = t.id;
+					childView.child.appendChild(tagTableController.makeTagView(t));
+					childView.removeButton.addEventListener("click",function(e){
+						developerCollection.findById(developerView.id,function(d){
+							d.removeTag(childView.id);
+							developerCollection.push(d,reload);
+						});
+					});
+					developerView.tag.appendChild(childView.nodes[0]);
 				}
 			});
 		}
@@ -64,14 +77,20 @@ class DeveloperTableController{
 		for(kanbanID in dev.kanbans){
 			kanbanCollection.findById(kanbanID,function(kanbans){
 				for(k in kanbans){
-					developerView.kanban.appendChild(kanbanTablecontroller.makeKanbanView(k));
+					var childView = new ChildView();
+					childView.id = k.id;
+					childView.child.appendChild(kanbanTablecontroller.makeKanbanView(k));
+					childView.removeButton.addEventListener("click",function(e){
+						developerCollection.findById(developerView.id,function(d){
+							d.removeKanban(childView.id);
+							developerCollection.push(d,reload);
+						});
+					});
+					developerView.kanban.appendChild(childView.nodes[0]);
 				}
 			});
 		}
 
-		var reload = function(){
-			js.Browser.window.location.reload();
-		};
 		developerView.changeNameButton.addEventListener("click",function(e){
 			developerCollection.change(developerView.id,{name:developerView.changeNameText.value},reload);
 		});

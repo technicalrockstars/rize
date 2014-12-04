@@ -114,4 +114,15 @@ class DeveloperCollection{
 			callback(res);
 		});
 	}
+
+	public function findById(id:String,callback:rize.model.Developer->Void){
+		loadData(function(data){
+			var tmp = data.filter(function(d){
+				return d.id == id;
+			});
+			trace(tmp.length);
+			var res = tmp[0];
+			callback(res);
+		});
+	}
 }

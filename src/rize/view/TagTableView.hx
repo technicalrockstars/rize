@@ -23,7 +23,7 @@ class TagTableView{}
 			<input type=button mage-var=changeTitleButton value=changeTitle>
 		<br>
 
-		<input type=button mage-var=removeButton value=remove>
+		<input type=button mage-var=removeButton value=delete>
 
 	</ul>
 </div>"

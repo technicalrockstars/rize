@@ -42,7 +42,7 @@ class KanbanTableView{}
 		end   :: <bar>{{endDate}}</bar>
 			<input type=button mage-var=setEndDate value=setDate>
 		<br>
-		<input type=button mage-var=removeButton value=remove>
+		<input type=button mage-var=removeButton value=delete>
 	</ul>
 </div>"
 ))

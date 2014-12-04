@@ -36,11 +36,26 @@ class DeveloperTableView{}
 		<br>
 
 		tags :: <div mage-var=tag></div>
-		<input type=button mage-var=removeButton value=remove>
+		<input type=button mage-var=removeButton value=delete>
 	</ul>
 </div>"
 ))
 class DeveloperView{
+	public var id : String;
+}
+
+
+@:build(mage.CompileHTML.generate(
+"package rize.view
+
+<div>
+	<ul>
+		<div mage-var=child></div>
+		<input type=button mage-var=removeButton value=remove>
+	</ul>
+</div>"
+))
+class ChildView{
 	public var id : String;
 }
 
