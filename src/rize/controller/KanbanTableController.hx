@@ -46,15 +46,24 @@ class KanbanTableController{
 	}
 
 	public function makeKanbanView(kanban:rize.model.Kanban){
+		var developerCollection = new rize.model.DeveloperCollection(milkcocoa);
+		var authName = kanban.auth;
+
+	
 		var kanbanView = new KanbanView({
 			startDate : kanban.getStartString(),
 			endDate : kanban.getEndString(),
 			title:kanban.title,
-			authName:kanban.auth,
+			authName:authName,
 			entry:kanban.getEntryString(),
 			state:kanban.stateString(),
 		});
+
+		developerCollection.findById(kanban.auth,function(data){
+			developerCollection.notify(data);
+		});
 		kanbanView.id = kanban.id;
+		developerCollection.addListener(kanbanView);
 		
 		var reload = function(){
 			js.Browser.window.location.reload();

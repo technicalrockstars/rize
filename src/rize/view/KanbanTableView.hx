@@ -48,4 +48,7 @@ class KanbanTableView{}
 ))
 class KanbanView{
 	public var id : String;
+	public function update(data:rize.model.Developer){
+		authName.nodeValue = data.name;
+	}
 }

@@ -125,4 +125,13 @@ class DeveloperCollection{
 			callback(res);
 		});
 	}
+
+	public var listener:rize.view.KanbanTableView.KanbanView;
+	public function addListener(l:rize.view.KanbanTableView.KanbanView){
+		listener = l;
+	}
+	public function notify(data:Dynamic){
+		this.listener.update(data);
+	}
+
 }
