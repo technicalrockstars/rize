@@ -1,39 +1,51 @@
 package rize.model;
 
+using Kanban.StateUtil;
 
 enum State{
 	Regist;
 	Work;
 	Finish;
-	Undifine;
 }
 
-class Kanban{
-	public var start:Date;
-	public var end:Date;
-	public var title:String;
-	public var auth:String;
-	public var entry:Date;
-	public var state:State;
-	public var id:String;
-
-	public static function restore(data:Dynamic){
-		trace(data);
-		var res = new Kanban(data.title);
-		res.start = data.start;
-		res.end = data.end;
-		res.auth = data.auth;
-		res.entry = data.entry;
-		res.state = stateInt(data.state[0]);
-		res.id = data.id;
-		return res;
+class StateUtil{
+	public static function toState(string:String) : State {
+		return switch(string){
+			case "regist" : Regist;
+			case "work" : Work;
+			case "Finish" : Finish;
+			case _ : throw "this string " + string +  "can't change state" ;
+		}
 	}
 
-	public function new(title:String,?auth:rize.model.Developer){
-		this.entry = Date.now();
+	public static function toString(state:State){
+		return switch(state){
+			case Regist : "regist";
+			case Work : "work";
+			case Finish : "finish";
+		}
+	}
+
+}
+
+
+class Kanban{
+	public var title:String;
+	public var author:String;
+	public var state:State;
+	
+	private var id:String;
+
+	private var startDate:Date;
+	private var endDate:Date;
+	private var entryDate:Date;
+
+
+	public function new(title:String, comment:String, author:String){
+		this.entryDate = Date.now();
 		this.title = title;
 		this.state = State.Regist;
-		this.auth  = "undefine";
+		this.auth  = author;
 	}
 
 	public function work()
@@ -62,59 +74,4 @@ class Kanban{
 	public function caluculateWip(){
 		return DateTools.hours(Math.abs( start.getTime()-end.getTime() ) );
 	}
-
-	public function stateString(){
-		if(state == State.Regist){
-			return "Regist";
-		}else if(state == State.Finish){
-			return "Finish";
-		}else if(state == State.Work){
-			return "Work";
-		}
-		return "Err";
-	}
-	
-	public static function stateInt(s:String){
-		if(s == "Regist"){
-			return State.Regist;
-		}else if(s == "Finish"){
-			return State.Finish;
-		}else if(s == "Work"){
-			return State.Work;
-		}
-		return State.Undifine;
-	}
-
-	public function toNextState(){
-		if(state == State.Regist){
-			state = State.Work;
-		}else{
-			state = State.Finish;
-		}
-	}
-
-	public function getEntryString(){
-		if(entry == null){
-			return "undefine";
-		}else{
-			return Std.string(entry);
-		}
-	}
-
-	public function getStartString(){
-		if(start == null){
-			return "undefine";
-		}else{
-			return Std.string(start);
-		}
-	}
-
-	public function getEndString(){
-		if (end == null){
-			return "undefine";
-		}else{
-			return Std.string(end);
-		}
-	}
-
 }
