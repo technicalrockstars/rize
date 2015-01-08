@@ -1,31 +1,27 @@
 package rize;
 
+
 import rize.model.*;
+import rize.view.*;
 import rize.controller.*;
-import rize.view.KanbanTableView;
-import rize.view.DeveloperTableView;
 import mlkcca.MilkCocoa;
 
 
-//登録　一覧　更新
 
 class Main{
+	public var controller = null;
+
 	public static function main(){
 		var milkcocoa = new MilkCocoa("io-ui2316wnm");
+		var dataStore = milkcocoa.dataStore("kanban");
 		js.Browser.window.addEventListener("load",function(e){
-
 			var messageDataStore = milkcocoa.dataStore('message');
 			
-			var developerTableController = new DeveloperTableController(milkcocoa);
-			js.Browser.document.body.appendChild(developerTableController.makeView());
-			
-			var tagTableController = new TagTableController(milkcocoa);
-			js.Browser.document.body.appendChild(tagTableController.makeView());
-			
-			var kanbanTableController = new KanbanTableController(milkcocoa);
-			js.Browser.document.body.appendChild(kanbanTableController.makeView());
-			
-			
+			var kanbanCollection = new KanbanCollection(dataStore);
+			var kanbanTableView = new KanbanTableView();
+			js.Browser.document.body.appendChild(kanbanTableView.nodes[0]);
+
+			var controller = new KanbanTableController(kanbanTableView, kanbanCollection);
 		});
 	}
 }

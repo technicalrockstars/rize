@@ -1,54 +1,57 @@
 package rize.view;
 
 
+import rize.model.KanbanCollection;
+import rize.controller.KanbanVC;
+
 @:build(mage.CompileHTML.generate(
 "package rize.view
 
 <div>
-	input new kanban name:<input type=text mage-var=input>
-	<input type=button mage-var=makeButton value=make>
-	<input type=button mage-var=reloadButton value=reload>
+	<div mage-var=inputform></div>
 	<div mage-var=children></div>
 </div>"
 ))
-class KanbanTableView{}
+class KanbanTableFrame{}
 
-@:build(mage.CompileHTML.generate(
-"package rize.view
+class KanbanTableView extends KanbanTableFrame{
+	private var model : KanbanCollection = null;
+	public var submitButton : js.html.ButtonElement;
+	public var form : KanbanFormView;
 
-<div>
-	<ul>
-		title :: <bar>{{title}}</bar>
-			<input type=text mage-var=changeTitleText>
-			<input type=button mage-var=changeTitleButton value=changeTitle>
-		<br>
-
-		entry :: <bar>{{entry}}</bar>
-		<br>
-
-		state :: <bar>{{state}}</bar>
-			<input type=button mage-var=nextStateButton value=next>
-		<br>
-		
-		auth  :: <bar>{{authName}}</bar> 
-			<input type=text mage-var=changeAuthText>
-			<input type=button mage-var=changeAuthButton value=changeAuth >
-		<br> 
-		
-		start :: <bar>{{startDate}}</bar>
-			<input type=button mage-var=setStartDate value=setDate>
-		<br>
-
-		end   :: <bar>{{endDate}}</bar>
-			<input type=button mage-var=setEndDate value=setDate>
-		<br>
-		<input type=button mage-var=removeButton value=delete>
-	</ul>
-</div>"
-))
-class KanbanView{
-	public var id : String;
-	public function update(data:rize.model.Developer){
-		authName.nodeValue = data.name;
+	public function new(){
+		super();
+		this.form = new KanbanFormView();
+		this.inputform.appendChild(form.nodes[0]);
+		this.submitButton = form.updateBtn;
 	}
+
+	public function setup(model){
+		this.model = model;
+		this.model.addObserver(this);
+		this.update();
+	}
+
+	public function update(){
+		this.removeAll();
+		var childrenView = this.model.data.map(function(kanban){
+			var kanbanView = new KanbanView();
+			var kanbanVC = new KanbanVC(kanbanView, kanban);
+			return kanbanView;
+		});
+
+
+		for(c in childrenView){
+			this.children.appendChild(c.nodes[0]);
+		}
+
+	}
+
+	private function removeAll(){
+		if(this.children.hasChildNodes()){
+			this.children.removeChild(this.children.firstChild);
+			this.removeAll();
+		}
+	}
+
 }

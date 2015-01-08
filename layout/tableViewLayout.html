@@ -1,32 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 	<meta charset="UTF-8">
-	<title>KanbanTable Layout</title>
+	<title>rize</title>
+	<script src="http://cdn.mlkcca.com/v0.2.7/milkcocoa.js"></script>
+	<script src="main.js"></script>
 </head>
-
 <body>
-	<div class="KanbanTable">
-		<div class="regist">
-			<div class="kanbann">
-				...
-			</div>
-			<div class="kanban">
-				....
-			</div>
-		</div>
+	
 
-		<div class="work">
-			<div class="kanbann">
-				<div class="title"></div>
-			</div>
-		</div>
-		<div class="finish">
-			<div class="kanbann">
-				<div class="title"></div>
-			</div>
-		</div>
+<div>
+
+	<div>
+		<h2>開発者登録</h2>
+		<dl>
+			<dt>名前</dt>
+			<dd><input type="text"><button>submit</button></dd>
+		</dl>
 	</div>
-</body>
 
+	<div>
+	<h2>開発者情報</h2>
+		<dl>
+			<dt>開発者</dt>
+			<dd><p>花田です!</p></dd>
+			<dt>タグ一覧</dt>
+			<dd>JavaScript, Haxe Haskell, Erlang</dd>
+		</dl>
+		<dl>
+			<dt>開発者</dt>
+			<dd><p>花田です!</p></dd>
+			<dt>タグ一覧</dt>
+			<dd>JavaScript, Haxe Haskell, Erlang</dd>
+		</dl>
+	</div>
+
+	<div>
+		<h2>タグ</h2>
+		<dl>
+			<dt>タグ追加</dt>
+			<dd><input type="text"><button>追加</button></dd>
+		</dl>
+	<div>
+
+<div>
+	<h2>カンバン登録</h2>
+
+	input new kanban name:<input type="text">
+	<input type="button" value="make">
+	<input type="button" value="reload">
+	<div><div>
+	<ul>
+		title :: <bar>test</bar>
+			<input type="text">
+			<input type="button" value="changeTitle">
+		<br>
+
+		entry :: <bar>2014-12-02T10:11:37.115Z</bar>
+		<br>
+
+		state :: <bar>Regist</bar>
+			<input type="button" value="next">
+		<br>
+		
+		auth  :: <bar>ひや</bar> 
+			<input type="text">
+			<input type="button" value="changeAuth">
+		<br> 
+		
+		start :: <bar>undefine</bar>
+			<input type="button" value="setDate">
+		<br>
+
+		end   :: <bar>undefine</bar>
+			<input type="button" value="setDate">
+		<br>
+		<input type="button" value="delete">
+	</ul>
+</div><div>
+	<ul>
+		title :: <bar>サンプル</bar>
+			<input type="text">
+			<input type="button" value="changeTitle">
+		<br>
+
+		entry :: <bar>2015-01-05T06:01:47.833Z</bar>
+		<br>
+
+		state :: <bar>Finish</bar>
+			<input type="button" value="next">
+		<br>
+		
+		auth  :: <bar>undefine</bar> 
+			<input type="text">
+			<input type="button" value="changeAuth">
+		<br> 
+		
+		start :: <bar>undefine</bar>
+			<input type="button" value="setDate">
+		<br>
+
+		end   :: <bar>undefine</bar>
+			<input type="button" value="setDate">
+		<br>
+		<input type="button" value="delete">
+	</ul>
+
+</body>
 </html>

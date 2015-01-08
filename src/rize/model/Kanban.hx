@@ -8,6 +8,14 @@ enum State{
 	Finish;
 }
 
+typedef KanbanOptionalField =  {
+	?startDate:Date, 
+	?endDate:Date, 
+	?entryDate:Date, 
+	?id:String,
+	?developer:String
+};
+
 class StateUtil{
 	public static function toState(string:String) : State {
 		return switch(string){
@@ -29,49 +37,54 @@ class StateUtil{
 }
 
 
-class Kanban{
+
+
+class Kanban extends Model{
 	public var title:String;
 	public var author:String;
 	public var state:State;
+	public var comment:String;
+	public var developer:Developer;
+	public var wip:String;
 	
 	private var id:String;
 
-	private var startDate:Date;
-	private var endDate:Date;
-	private var entryDate:Date;
+	public var startDate(default, null):Date;
+	public var endDate(default, null):Date;
+	public var entryDate(default, null):Date;
 
 
-	public function new(title:String, comment:String, author:String){
+	public function new(title:String, comment:String, author:String, ?options : KanbanOptionalField){
 		this.entryDate = Date.now();
 		this.title = title;
+		this.comment = comment;
 		this.state = State.Regist;
-		this.auth  = author;
+		this.author  = author;
+		if( options != null && options.developer != null && options.developer != "" )
+			this.developer = new Developer(options.developer);
 	}
 
-	public function work()
-		return if(this.state == State.Regist){
-			this.start = Date.now();
-			this.state = State.Work;
-			true;
-		}else false;
-
-	public function isWork(){
-		return State.Work == this.state;
+	public function nextState(){
+		switch(this.state){
+			case Regist : this.work();
+			case Work : this.finish(); 
+			case _ : 
+		}
+		this.changed();
 	}
 
-	public function finish()
-		return if(this.state == State.Work){
-			this.end = Date.now();
-			this.state = State.Finish;
-			true;
-		}else false;
-	
-
-	public function isFinish(){
-		return State.Finish == this.state;
+	private function work(){
+		this.startDate = Date.now();
+		this.state = State.Work;
 	}
 
-	public function caluculateWip(){
-		return DateTools.hours(Math.abs( start.getTime()-end.getTime() ) );
+	private function finish(){
+		this.endDate = Date.now();
+		this.state = State.Finish;
+		this.wip = Std.string(this.caluculateWip());
+	}
+
+	private function caluculateWip(){
+		return this.endDate.getTime() - this.startDate.getTime();
 	}
 }
