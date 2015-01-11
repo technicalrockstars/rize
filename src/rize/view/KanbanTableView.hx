@@ -9,7 +9,13 @@ import rize.controller.KanbanVC;
 
 <div>
 	<div mage-var=inputform></div>
+	<div mage-var=radio>
+		<input type=radio name=state value=regist checked=true>regist
+		<input type=radio name=state value=work>work
+		<input type=radio name=state value=finish>finish
+	</div>
 	<div mage-var=children></div>
+
 </div>"
 ))
 class KanbanTableFrame{}

@@ -28,7 +28,20 @@ class KanbanTableController{
 				js.Browser.window.alert("なんかおかしい");
 			}
 		});
+
+		for(c in this.view.radio.children){
+			c.addEventListener("click",function(event){
+				switch(event.target.value){
+					case "regist" : this.model.changeState(Regist);
+					case "work" : this.model.changeState(Work);
+					case "finish" : this.model.changeState(Finish);
+					case _ : 
+				}
+			});
+		}
 	}
+
+
 
 
 	private function validate(input : String)
