@@ -34,7 +34,7 @@ class KanbanTableView extends KanbanTableFrame{
 
 	public function update(){
 		this.removeAll();
-		var childrenView = this.model.data.map(function(kanban){
+		var childrenView = this.model.collection.map(function(kanban){
 			var kanbanView = new KanbanView();
 			var kanbanVC = new KanbanVC(kanbanView, kanban);
 			return kanbanView;

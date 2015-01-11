@@ -23,13 +23,13 @@ class KanbanTableController{
 			var author = this.view.form.author.value;
 			var developer = this.view.form.developer.value;
 			if( this.validates([name,comment,author]) ){
-				var kanban = new Kanban(name,comment,author,{developer:developer});
-				this.model.push(kanban);
+				this.model.addKanban(name,comment,author,developer);
 			}else{
 				js.Browser.window.alert("なんかおかしい");
 			}
 		});
 	}
+
 
 	private function validate(input : String)
 		return input != null && input != "";

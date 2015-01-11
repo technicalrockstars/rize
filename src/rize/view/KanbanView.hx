@@ -86,8 +86,11 @@ class KanbanView{
 
 		if(model.endDate != null){
 			this.endDate.nodeValue = model.endDate.toString();
-			this.wip.nodeValue = model.wip;
+			this.wip.nodeValue = model.wip;		
 		}
+
+		if(model.state == Finish && this.updateBtn != null)
+			this.updateBtn.remove();
 	}
 
 }
