@@ -27,27 +27,16 @@ class Main{
 			var milkcocoa = new MilkCocoa(Main.config.milkcocoa_id);
 			var dataStore = milkcocoa.dataStore("kanban");
 
-			var accountView = new AccountView();
-			Account.milkcocoa = milkcocoa;
-			var accountController = new AccountController(accountView);
-
 			var kanbanTableView = new KanbanTableView();
+			var kanbanCollection = new KanbanCollection(dataStore);
+			var controller = new KanbanTableController(kanbanTableView, kanbanCollection);
 
 
-			accountController.onNotLogined = function(){
-				var view : js.html.Element = cast kanbanTableView.nodes[0];
-				view.remove();
-				js.Browser.document.body.appendChild(accountView.nodes[0]);
-			}
-
-			accountController.onLogin = function(){
-				kanbanTableView = new KanbanTableView();
-				js.Browser.document.body.appendChild(kanbanTableView.nodes[0]);
-				var kanbanCollection = new KanbanCollection(dataStore);
-				var controller = new KanbanTableController(kanbanTableView, kanbanCollection);
-			}
-			accountController.getCurrentUser();
-
+			var account = new Account(milkcocoa);
+			var accountView = new AccountView(account,kanbanTableView);
+			var accountController = new AccountController(accountView,account);
+			
+			js.Browser.document.body.appendChild(accountView.nodes[0]);
 		});
 	}
 }
