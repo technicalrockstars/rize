@@ -15,7 +15,7 @@ package rize.view;
 		<dd><input type=password mage-var=confirm ></dd>
 		<dt>username</dt>
 		<dd><input type=text mage-var=username/></dd>
-
+		
 		<button mage-var=submitBtn>送信</button>
 	</dl>
 </div>"
@@ -42,6 +42,7 @@ class SignIn{}
 "package rize.view
 
 <div>
+
 	<div mage-var=signup></div>
 	<div mage-var=signin></div>
 </div>"

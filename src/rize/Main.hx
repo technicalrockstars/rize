@@ -6,12 +6,25 @@ import rize.view.*;
 import rize.controller.*;
 import mlkcca.MilkCocoa;
 
+typedef Config = {
+	milkcocoa_id : String,
+	slack : {
+		url : String,
+		channel : String,
+		name : String
+	}
+}
+
 class Main{
 	public var controller = null;
 
+	public static var config : Config = CompileTime.parseJsonFile("config.json");
+
 	public static function main(){
 		js.Browser.window.addEventListener("load",function(e){
-			var milkcocoa = new MilkCocoa("io-bi49l4chn");
+
+
+			var milkcocoa = new MilkCocoa(Main.config.milkcocoa_id);
 			var dataStore = milkcocoa.dataStore("kanban");
 
 			var accountView = new AccountView();

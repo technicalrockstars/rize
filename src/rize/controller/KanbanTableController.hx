@@ -23,7 +23,7 @@ class KanbanTableController{
 			var author = this.view.form.author.value;
 			var developer = this.view.form.developer.value;
 			if( this.validates([name,comment,author]) ){
-				this.model.addKanban(name,comment,author,developer);
+				this.model.addKanban(name,comment,author,if(developer != null) developer else null);
 			}else{
 				js.Browser.window.alert("なんかおかしい");
 			}

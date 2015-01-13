@@ -1,6 +1,7 @@
 -cp src
 -lib Mage
 -lib milkcocoa-hx
+-lib compiletime
 -main rize.Main
 -js export/main.js
 -dce no

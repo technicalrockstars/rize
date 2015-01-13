@@ -5,6 +5,8 @@ import mlkcca.MilkCocoa;
 class Account{
 	public var id : String;
 	public var username : String;
+	public var onlogin : Void -> Void;
+	public var onlogout : Void -> Void;
 
 	public function new(id, username){
 		this.id = id;

@@ -3,6 +3,9 @@ package rize.model;
 import mlkcca.DataStore;
 import haxe.Serializer;
 import haxe.Unserializer;
+import haxe.Http;
+import haxe.Json;
+import haxe.Template;
 using Kanban.StateUtil;
 
 enum State{
@@ -147,6 +150,35 @@ class Kanban extends Model{
 
 	public function save(){
 		this.dataStore.set(this.id,{kanban:this.getSerialized()});
+		this.slackPost();
+	}
+
+	private function slackPost(){
+		var http = new Http(rize.Main.config.slack.url);
+		http.setPostData(this.getSlackPostText());
+		http.setHeader( "Content-Type", "application/x-www-form-urlencoded" );
+		http.request(true);
+	}
+
+	private function getSlackPostText(){
+		var template  = new Template( 
+"カンバンが更新されました。
+タイトル : ::title:: 
+作成者 : ::author::
+状態 : ::state::
+url : <http://kanban-technicalrockstars.bitballoon.com|rizeへ>");
+		var string = template.execute({
+			title : this.title,
+			comment : this.comment,
+			author : this.author,
+			state : this.state.toString()
+			});
+		var json = {
+			text : string,
+			channel: rize.Main.config.slack.channel,
+			username: rize.Main.config.slack.url
+		};
+		return "payload=" + Json.stringify(json);
 	}
 
 

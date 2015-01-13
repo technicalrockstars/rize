@@ -17,7 +17,7 @@ class KanbanVC{
 	public function setup(){
 		this.view.setup(this.model);
 		this.view.updateBtn.addEventListener("click",function(e){
-			if(this.model.developer == null){
+			if(this.model.developer.name == null || this.model.developer.name == ""){
 				var developerName = this.view.developer.value;
 				if(developerName == "" || developerName == null ){
 					js.Browser.window.alert("開発者名を入力してください");

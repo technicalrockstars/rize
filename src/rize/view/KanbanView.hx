@@ -70,7 +70,7 @@ class KanbanView{
 		this.comment.nodeValue = model.comment;
 		this.author.nodeValue = model.author;
 
-		if(model.developer != null){
+		if(model.developer.name != null && model.developer.name != ""){
 			var parentNode = this.developer.parentNode;
 			var textNode = js.Browser.document.createTextNode(model.developer.name);
 			if( parentNode != null )
