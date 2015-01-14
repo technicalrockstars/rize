@@ -3,6 +3,24 @@ package rize.view;
 
 import rize.model.KanbanCollection;
 import rize.controller.KanbanVC;
+import rize.controller.KanbanTableController;
+
+@:build(mage.CompileCSS.generate(
+"package rize.view.kanban.child;
+
+.record {
+	float : left;
+}"))
+@:build(mage.CompileHTML.generate(
+"package rize.view.kanban.child;
+
+<div class=record mage-var=content>
+	<button mage-var=removeBtn>削除</button>
+</div>"
+))
+class ChildView{
+	public var id : String;
+}
 
 @:build(mage.CompileHTML.generate(
 "package rize.view
@@ -22,6 +40,7 @@ class KanbanTableFrame{}
 
 class KanbanTableView extends KanbanTableFrame{
 	private var model : KanbanCollection = null;
+	private var controller : KanbanTableController;
 	public var submitButton : js.html.ButtonElement;
 	public var form : KanbanFormView;
 
@@ -32,18 +51,24 @@ class KanbanTableView extends KanbanTableFrame{
 		this.submitButton = form.updateBtn;
 	}
 
-	public function setup(model){
+	public function setup(model, controller){
+		this.controller = controller;
 		this.model = model;
 		this.model.addObserver(this);
 		this.update();
 	}
+
 
 	public function update(){
 		this.removeAll();
 		var childrenView = this.model.collection.map(function(kanban){
 			var kanbanView = new KanbanView();
 			var kanbanVC = new KanbanVC(kanbanView, kanban);
-			return kanbanView;
+			var childView = new ChildView();
+			childView.id = kanban.id;
+			childView.content.insertBefore(kanbanView.nodes[0],childView.removeBtn);
+			this.controller.setEvent(childView);
+			return childView;
 		});
 
 

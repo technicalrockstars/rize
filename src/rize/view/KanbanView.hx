@@ -12,49 +12,31 @@ using rize.model.Kanban.StateUtil;
 ))
 class DeveloperForm{}
 
-@:build(mage.CompileCSS.generate(
-"package rize.view.kanban;
 
-.record {
-	float : left;
-}"))
 @:build(mage.CompileHTML.generate(
 "package rize.view.kanban;
-
-<div class=record>
-	<ul>
-		<dl>
-			<dt>カンバン名</dt>
-			<dd>{{title}}</dd>
-
-			<dt>詳細</dt>
-			<dd>{{comment}}</dd>
-
-			<dt>作成者</dt>
-			<dd>{{author}}</dd>
-
-			<dt>開発者</dt>
-			<dd><input type='text' mage-var=developer/></dd>
-
-			<dt>状態</dt>
-			<dd>{{state}}</dd>
-
-			<dt>登録時</dt>
-			<dd>{{entryDate}}</dd>
-
-			<dt>着手時</dt>
-			<dd>{{startDate}}</dd>
-
-			<dt>完了時</dt>
-			<dd>{{endDate}}</dd>
-
-			<dt>WIP</dt>
-			<dd>{{wip}}</dd>
-
-			<button mage-var=updateBtn>更新</button>
-		</dl>
-	</ul>
-</div>"
+	
+<dl>
+	<dt>カンバン名</dt>
+	<dd>{{title}}</dd>
+	<dt>詳細</dt>
+	<dd>{{comment}}</dd>
+	<dt>作成者</dt>
+	<dd>{{author}}</dd>
+	<dt>開発者</dt>
+	<dd><input type='text' mage-var=developer/></dd>
+	<dt>状態</dt>
+	<dd>{{state}}</dd>
+	<dt>登録時</dt>
+	<dd>{{entryDate}}</dd>
+	<dt>着手時</dt>
+	<dd>{{startDate}}</dd>
+	<dt>完了時</dt>
+	<dd>{{endDate}}</dd>
+	<dt>WIP</dt>
+	<dd>{{wip}}</dd>
+	<button mage-var=updateBtn>更新</button>
+</dl>"
 ))
 class KanbanView{
 	public var model:Kanban = null;

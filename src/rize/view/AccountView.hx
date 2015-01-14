@@ -78,12 +78,12 @@ class NoLoginedView extends NoLoginedViewFrame{
 ))
 class LoginedViewFrame{}
 
-typedef ChildView = { nodes : Array<js.html.Node> }
+typedef ContentView = { nodes : Array<js.html.Node> }
 
-class LoginedView<T:ChildView> extends LoginedViewFrame{
-	public function new(childView:T){
+class LoginedView<T:ContentView> extends LoginedViewFrame{
+	public function new(contentView:T){
 		super();
-		this.child.appendChild(childView.nodes[0]);
+		this.child.appendChild(contentView.nodes[0]);
 	}
 }
 
@@ -96,17 +96,17 @@ class LoginedView<T:ChildView> extends LoginedViewFrame{
 ))
 class AccountViewFrame{}
 
-class AccountView<T:ChildView> extends AccountViewFrame{
+class AccountView<T:ContentView> extends AccountViewFrame{
 	public var model : Account;
 	public var nologinedView : NoLoginedView;
 	public var loginedView :  LoginedView<T>;
 
 
-	public function new(model, childView : T){
+	public function new(model, contentView : T){
 		super();
 		this.model = model;
 		this.nologinedView = new NoLoginedView();
-		this.loginedView = new LoginedView(childView);
+		this.loginedView = new LoginedView(contentView);
 	}
 
 	public function update(){

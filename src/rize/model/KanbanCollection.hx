@@ -16,6 +16,7 @@ class KanbanCollection extends Model{
 		this.state = Regist;
 		this.dataStore = dataStore;
 		this.dataStore.on("set",this.on_set);
+		this.dataStore.on("remove",this.on_remove);
 		this.reload();
 	}
 
@@ -43,12 +44,30 @@ class KanbanCollection extends Model{
 		this.changed();
 	}
 
+	private function on_remove(data){
+		var kanban = this.getKanban(data.id);
+		if(this.col.remove(kanban)) this.changed();
+	}
+
 	public function addKanban(name,comment, author, ?developer){
 		var kanban = new Kanban(this.dataStore, name, comment, author);
 		if( developer != null ) kanban.setDeveloper(developer);
 		this.col.unshift(kanban);
 		this.changed();
 		kanban.save();
+	}
+
+	public function removeKanban(id:String){
+		this.dataStore.remove(id);
+	}
+
+	private function getKanban(id:String){
+		for( c in this.col){
+			if( c.id == id ){
+				return c;
+			}
+		}
+		return null;
 	}
 
 	private function get_collection(){

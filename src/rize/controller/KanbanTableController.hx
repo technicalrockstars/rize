@@ -3,6 +3,7 @@ package rize.controller;
 import rize.model.KanbanCollection;
 import rize.model.Kanban;
 import rize.view.KanbanTableView;
+import rize.view.KanbanTableView.ChildView;
 using Lambda;
 
 class KanbanTableController{
@@ -16,7 +17,7 @@ class KanbanTableController{
 	}
 
 	public function setup(){
-		this.view.setup(this.model);
+		this.view.setup(this.model,this);
 		this.view.submitButton.addEventListener("click",function(e){
 			var name = this.view.form.name.value;
 			var comment = this.view.form.comment.value;
@@ -39,6 +40,13 @@ class KanbanTableController{
 				}
 			});
 		}
+	}
+
+	public function setEvent(childView : ChildView){
+		childView.removeBtn.addEventListener("click",function(event){
+			if( js.Browser.window.confirm("本当に削除するぽよ?") )
+				this.model.removeKanban(childView.id);
+		});
 	}
 
 
