@@ -150,7 +150,11 @@ class Kanban extends Model{
 
 	public function save(){
 		this.dataStore.set(this.id,{kanban:this.getSerialized()});
+		#if dev
+		trace("slackでPostするはず!");
+		#else 
 		this.slackPost();
+		#end
 	}
 
 	private function slackPost(){

@@ -1,8 +1,8 @@
 {
-	"milkcocoa_id" : "io-ei4si88cg",
+	"milkcocoa_id" : "",
 	"slack" : {
-		"url" : "https://hooks.slack.com/services/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",
-	    "channel" : "#kanban",
-		"name" : "kanban_bot"
+		"url" : "",
+	    "channel" : "",
+		"name" : "t"
 	}
 }

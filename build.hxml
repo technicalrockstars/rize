@@ -5,3 +5,4 @@
 -main rize.Main
 -js export/main.js
 -dce no
+-D dev
