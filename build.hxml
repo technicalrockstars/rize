@@ -6,3 +6,5 @@
 -js export/main.js
 -dce no
 -D dev
+
+-cmd mv exportmage.css export/mage.css

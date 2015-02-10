@@ -1,0 +1,849 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '--save-dev', 'gulp' ]
+2 info using npm@1.4.14
+3 info using node@v0.10.29
+4 verbose cache add [ 'gulp', null ]
+5 verbose cache add name=undefined spec="gulp" args=["gulp",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'gulp',
+6 verbose parsed url   path: 'gulp',
+6 verbose parsed url   href: 'gulp' }
+7 silly lockFile 9750c68d-gulp gulp
+8 verbose lock gulp /Users/kiyopikko/.npm/9750c68d-gulp.lock
+9 silly lockFile 9750c68d-gulp gulp
+10 silly lockFile 9750c68d-gulp gulp
+11 verbose addNamed [ 'gulp', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 72f4391e-gulp gulp@
+14 verbose lock gulp@ /Users/kiyopikko/.npm/72f4391e-gulp.lock
+15 silly addNameRange { name: 'gulp', range: '*', hasData: false }
+16 verbose url raw gulp
+17 verbose url resolving [ 'https://registry.npmjs.org/', './gulp' ]
+18 verbose url resolved https://registry.npmjs.org/gulp
+19 info trying registry request attempt 1 at 20:35:23
+20 verbose etag "E4KM10T91FG1KZUYGMMI26PXX"
+21 http GET https://registry.npmjs.org/gulp
+22 http 200 https://registry.npmjs.org/gulp
+23 silly registry.get cb [ 200,
+23 silly registry.get   { date: 'Mon, 02 Feb 2015 11:35:23 GMT',
+23 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+23 silly registry.get     etag: '"2E14O2KFTENXQXS7C2XC9WQOO"',
+23 silly registry.get     'content-type': 'application/json',
+23 silly registry.get     'cache-control': 'max-age=60',
+23 silly registry.get     'content-length': '97324',
+23 silly registry.get     'accept-ranges': 'bytes',
+23 silly registry.get     via: '1.1 varnish',
+23 silly registry.get     age: '4',
+23 silly registry.get     'x-served-by': 'cache-ty66-TYO',
+23 silly registry.get     'x-cache': 'HIT',
+23 silly registry.get     'x-cache-hits': '1',
+23 silly registry.get     'x-timer': 'S1422876923.836355,VS0,VE0',
+23 silly registry.get     vary: 'Accept',
+23 silly registry.get     'keep-alive': 'timeout=10, max=50',
+23 silly registry.get     connection: 'Keep-Alive' } ]
+24 silly addNameRange number 2 { name: 'gulp', range: '*', hasData: true }
+25 silly addNameRange versions [ 'gulp',
+25 silly addNameRange   [ '0.0.1',
+25 silly addNameRange     '0.0.2',
+25 silly addNameRange     '0.0.3',
+25 silly addNameRange     '0.0.4',
+25 silly addNameRange     '0.0.5',
+25 silly addNameRange     '0.0.7',
+25 silly addNameRange     '0.0.8',
+25 silly addNameRange     '0.0.9',
+25 silly addNameRange     '0.1.0',
+25 silly addNameRange     '0.2.0',
+25 silly addNameRange     '1.0.0',
+25 silly addNameRange     '1.1.0',
+25 silly addNameRange     '1.2.0',
+25 silly addNameRange     '1.2.1',
+25 silly addNameRange     '2.0.0',
+25 silly addNameRange     '2.0.1',
+25 silly addNameRange     '2.1.0',
+25 silly addNameRange     '2.2.0',
+25 silly addNameRange     '2.3.0',
+25 silly addNameRange     '2.4.0',
+25 silly addNameRange     '2.4.1',
+25 silly addNameRange     '2.6.0',
+25 silly addNameRange     '2.6.1',
+25 silly addNameRange     '2.7.0',
+25 silly addNameRange     '3.0.0',
+25 silly addNameRange     '3.1.1',
+25 silly addNameRange     '3.1.2',
+25 silly addNameRange     '3.1.3',
+25 silly addNameRange     '3.1.4',
+25 silly addNameRange     '3.2.0',
+25 silly addNameRange     '3.2.1',
+25 silly addNameRange     '3.2.2',
+25 silly addNameRange     '3.2.3',
+25 silly addNameRange     '3.2.4',
+25 silly addNameRange     '3.2.5',
+25 silly addNameRange     '3.3.0',
+25 silly addNameRange     '3.3.1',
+25 silly addNameRange     '3.3.2',
+25 silly addNameRange     '3.3.4',
+25 silly addNameRange     '3.4.0',
+25 silly addNameRange     '3.5.0',
+25 silly addNameRange     '3.5.1',
+25 silly addNameRange     '3.5.2',
+25 silly addNameRange     '3.5.5',
+25 silly addNameRange     '3.5.6',
+25 silly addNameRange     '3.6.0',
+25 silly addNameRange     '3.6.1',
+25 silly addNameRange     '3.6.2',
+25 silly addNameRange     '3.7.0',
+25 silly addNameRange     '3.8.0',
+25 silly addNameRange     '3.8.1',
+25 silly addNameRange     '3.8.2',
+25 silly addNameRange     '3.8.3',
+25 silly addNameRange     '3.8.4',
+25 silly addNameRange     '3.8.5',
+25 silly addNameRange     '3.8.6',
+25 silly addNameRange     '3.8.7',
+25 silly addNameRange     '3.8.8',
+25 silly addNameRange     '3.8.9',
+25 silly addNameRange     '3.8.10' ] ]
+26 verbose addNamed [ 'gulp', '3.8.10' ]
+27 verbose addNamed [ '3.8.10', '3.8.10' ]
+28 silly lockFile f843d0d7-gulp-3-8-10 gulp@3.8.10
+29 verbose lock gulp@3.8.10 /Users/kiyopikko/.npm/f843d0d7-gulp-3-8-10.lock
+30 silly lockFile f843d0d7-gulp-3-8-10 gulp@3.8.10
+31 silly lockFile f843d0d7-gulp-3-8-10 gulp@3.8.10
+32 silly lockFile 72f4391e-gulp gulp@
+33 silly lockFile 72f4391e-gulp gulp@
+34 silly resolved [ { name: 'gulp',
+34 silly resolved     description: 'The streaming build system',
+34 silly resolved     version: '3.8.10',
+34 silly resolved     homepage: 'http://gulpjs.com',
+34 silly resolved     repository: { type: 'git', url: 'https://github.com/gulpjs/gulp' },
+34 silly resolved     author:
+34 silly resolved      { name: 'Fractal',
+34 silly resolved        email: 'contact@wearefractal.com',
+34 silly resolved        url: 'http://wearefractal.com/' },
+34 silly resolved     tags: [ 'build', 'stream', 'system', 'make', 'tool', 'asset', 'pipeline' ],
+34 silly resolved     files: [ 'index.js', 'lib', 'bin', 'completion' ],
+34 silly resolved     bin: { gulp: './bin/gulp.js' },
+34 silly resolved     man: [ 'gulp.1' ],
+34 silly resolved     dependencies:
+34 silly resolved      { archy: '^1.0.0',
+34 silly resolved        chalk: '^0.5.0',
+34 silly resolved        deprecated: '^0.0.1',
+34 silly resolved        'gulp-util': '^3.0.0',
+34 silly resolved        interpret: '^0.3.2',
+34 silly resolved        liftoff: '^0.13.2',
+34 silly resolved        minimist: '^1.1.0',
+34 silly resolved        orchestrator: '^0.3.0',
+34 silly resolved        'pretty-hrtime': '^0.2.0',
+34 silly resolved        semver: '^4.1.0',
+34 silly resolved        tildify: '^1.0.0',
+34 silly resolved        v8flags: '^1.0.1',
+34 silly resolved        'vinyl-fs': '^0.3.0' },
+34 silly resolved     devDependencies:
+34 silly resolved      { coveralls: '^2.7.0',
+34 silly resolved        'graceful-fs': '^3.0.0',
+34 silly resolved        istanbul: '^0.3.0',
+34 silly resolved        jshint: '^2.5.0',
+34 silly resolved        'jshint-stylish': '^1.0.0',
+34 silly resolved        'marked-man': '^0.1.3',
+34 silly resolved        mkdirp: '^0.5.0',
+34 silly resolved        mocha: '^2.0.1',
+34 silly resolved        'mocha-lcov-reporter': '^0.0.1',
+34 silly resolved        q: '^1.0.0',
+34 silly resolved        rimraf: '^2.2.5',
+34 silly resolved        should: '^4.0.0' },
+34 silly resolved     scripts:
+34 silly resolved      { prepublish: 'marked-man --name gulp docs/CLI.md > gulp.1',
+34 silly resolved        lint: 'jshint lib bin index.js --reporter node_modules/jshint-stylish/stylish.js --exclude node_modules',
+34 silly resolved        test: 'npm run-script lint && mocha --reporter spec',
+34 silly resolved        coveralls: 'istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage' },
+34 silly resolved     engineStrict: true,
+34 silly resolved     engines: { node: '>= 0.9' },
+34 silly resolved     licenses: [ [Object] ],
+34 silly resolved     gitHead: '0203bccdc7397991da68ea3e51fef7b2df75a46f',
+34 silly resolved     bugs: { url: 'https://github.com/gulpjs/gulp/issues' },
+34 silly resolved     _id: 'gulp@3.8.10',
+34 silly resolved     _shasum: 'bfb8fc156be97820f02a7f8b3af61a86666f9e31',
+34 silly resolved     _from: 'gulp@',
+34 silly resolved     _npmVersion: '2.1.6',
+34 silly resolved     _nodeVersion: '0.10.33',
+34 silly resolved     _npmUser: { name: 'fractal', email: 'contact@wearefractal.com' },
+34 silly resolved     maintainers: [ [Object] ],
+34 silly resolved     dist:
+34 silly resolved      { shasum: 'bfb8fc156be97820f02a7f8b3af61a86666f9e31',
+34 silly resolved        tarball: 'http://registry.npmjs.org/gulp/-/gulp-3.8.10.tgz' },
+34 silly resolved     directories: {},
+34 silly resolved     _resolved: 'https://registry.npmjs.org/gulp/-/gulp-3.8.10.tgz',
+34 silly resolved     readme: 'ERROR: No README data found!' } ]
+35 info install gulp@3.8.10 into /Users/kiyopikko
+36 info installOne gulp@3.8.10
+37 info /Users/kiyopikko/node_modules/gulp unbuild
+38 verbose tar unpack /Users/kiyopikko/.npm/gulp/3.8.10/package.tgz
+39 silly lockFile 4994072b-sers-kiyopikko-node-modules-gulp tar:///Users/kiyopikko/node_modules/gulp
+40 verbose lock tar:///Users/kiyopikko/node_modules/gulp /Users/kiyopikko/.npm/4994072b-sers-kiyopikko-node-modules-gulp.lock
+41 silly lockFile a00256d2-ikko-npm-gulp-3-8-10-package-tgz tar:///Users/kiyopikko/.npm/gulp/3.8.10/package.tgz
+42 verbose lock tar:///Users/kiyopikko/.npm/gulp/3.8.10/package.tgz /Users/kiyopikko/.npm/a00256d2-ikko-npm-gulp-3-8-10-package-tgz.lock
+43 silly gunzTarPerm modes [ '755', '644' ]
+44 silly gunzTarPerm extractEntry package.json
+45 silly gunzTarPerm extractEntry README.md
+46 silly gunzTarPerm extractEntry LICENSE
+47 silly gunzTarPerm extractEntry index.js
+48 silly gunzTarPerm extractEntry CHANGELOG.md
+49 silly gunzTarPerm extractEntry bin/gulp.js
+50 silly gunzTarPerm extractEntry completion/README.md
+51 silly gunzTarPerm extractEntry completion/bash
+52 silly gunzTarPerm extractEntry completion/fish
+53 silly gunzTarPerm extractEntry completion/powershell
+54 silly gunzTarPerm extractEntry completion/zsh
+55 silly gunzTarPerm extractEntry lib/completion.js
+56 silly gunzTarPerm extractEntry lib/taskTree.js
+57 silly lockFile 4994072b-sers-kiyopikko-node-modules-gulp tar:///Users/kiyopikko/node_modules/gulp
+58 silly lockFile 4994072b-sers-kiyopikko-node-modules-gulp tar:///Users/kiyopikko/node_modules/gulp
+59 silly lockFile a00256d2-ikko-npm-gulp-3-8-10-package-tgz tar:///Users/kiyopikko/.npm/gulp/3.8.10/package.tgz
+60 silly lockFile a00256d2-ikko-npm-gulp-3-8-10-package-tgz tar:///Users/kiyopikko/.npm/gulp/3.8.10/package.tgz
+61 info preinstall gulp@3.8.10
+62 verbose readDependencies using package.json deps
+63 verbose readDependencies using package.json deps
+64 verbose cache add [ 'archy@^1.0.0', null ]
+65 verbose cache add name=undefined spec="archy@^1.0.0" args=["archy@^1.0.0",null]
+66 verbose parsed url { protocol: null,
+66 verbose parsed url   slashes: null,
+66 verbose parsed url   auth: null,
+66 verbose parsed url   host: null,
+66 verbose parsed url   port: null,
+66 verbose parsed url   hostname: null,
+66 verbose parsed url   hash: null,
+66 verbose parsed url   search: null,
+66 verbose parsed url   query: null,
+66 verbose parsed url   pathname: 'archy@^1.0.0',
+66 verbose parsed url   path: 'archy@^1.0.0',
+66 verbose parsed url   href: 'archy@^1.0.0' }
+67 verbose cache add [ 'chalk@^0.5.0', null ]
+68 verbose cache add name=undefined spec="chalk@^0.5.0" args=["chalk@^0.5.0",null]
+69 verbose parsed url { protocol: null,
+69 verbose parsed url   slashes: null,
+69 verbose parsed url   auth: null,
+69 verbose parsed url   host: null,
+69 verbose parsed url   port: null,
+69 verbose parsed url   hostname: null,
+69 verbose parsed url   hash: null,
+69 verbose parsed url   search: null,
+69 verbose parsed url   query: null,
+69 verbose parsed url   pathname: 'chalk@^0.5.0',
+69 verbose parsed url   path: 'chalk@^0.5.0',
+69 verbose parsed url   href: 'chalk@^0.5.0' }
+70 verbose cache add name="archy" spec="^1.0.0" args=["archy","^1.0.0"]
+71 verbose parsed url { protocol: null,
+71 verbose parsed url   slashes: null,
+71 verbose parsed url   auth: null,
+71 verbose parsed url   host: null,
+71 verbose parsed url   port: null,
+71 verbose parsed url   hostname: null,
+71 verbose parsed url   hash: null,
+71 verbose parsed url   search: null,
+71 verbose parsed url   query: null,
+71 verbose parsed url   pathname: '^1.0.0',
+71 verbose parsed url   path: '^1.0.0',
+71 verbose parsed url   href: '^1.0.0' }
+72 verbose addNamed [ 'archy', '^1.0.0' ]
+73 verbose addNamed [ null, '>=1.0.0-0 <2.0.0-0' ]
+74 silly lockFile 91d41a90-archy-1-0-0 archy@^1.0.0
+75 verbose lock archy@^1.0.0 /Users/kiyopikko/.npm/91d41a90-archy-1-0-0.lock
+76 verbose cache add [ 'gulp-util@^3.0.0', null ]
+77 verbose cache add name=undefined spec="gulp-util@^3.0.0" args=["gulp-util@^3.0.0",null]
+78 verbose parsed url { protocol: null,
+78 verbose parsed url   slashes: null,
+78 verbose parsed url   auth: null,
+78 verbose parsed url   host: null,
+78 verbose parsed url   port: null,
+78 verbose parsed url   hostname: null,
+78 verbose parsed url   hash: null,
+78 verbose parsed url   search: null,
+78 verbose parsed url   query: null,
+78 verbose parsed url   pathname: 'gulp-util@^3.0.0',
+78 verbose parsed url   path: 'gulp-util@^3.0.0',
+78 verbose parsed url   href: 'gulp-util@^3.0.0' }
+79 verbose cache add [ 'deprecated@^0.0.1', null ]
+80 verbose cache add name=undefined spec="deprecated@^0.0.1" args=["deprecated@^0.0.1",null]
+81 verbose parsed url { protocol: null,
+81 verbose parsed url   slashes: null,
+81 verbose parsed url   auth: null,
+81 verbose parsed url   host: null,
+81 verbose parsed url   port: null,
+81 verbose parsed url   hostname: null,
+81 verbose parsed url   hash: null,
+81 verbose parsed url   search: null,
+81 verbose parsed url   query: null,
+81 verbose parsed url   pathname: 'deprecated@^0.0.1',
+81 verbose parsed url   path: 'deprecated@^0.0.1',
+81 verbose parsed url   href: 'deprecated@^0.0.1' }
+82 verbose cache add name="chalk" spec="^0.5.0" args=["chalk","^0.5.0"]
+83 verbose parsed url { protocol: null,
+83 verbose parsed url   slashes: null,
+83 verbose parsed url   auth: null,
+83 verbose parsed url   host: null,
+83 verbose parsed url   port: null,
+83 verbose parsed url   hostname: null,
+83 verbose parsed url   hash: null,
+83 verbose parsed url   search: null,
+83 verbose parsed url   query: null,
+83 verbose parsed url   pathname: '^0.5.0',
+83 verbose parsed url   path: '^0.5.0',
+83 verbose parsed url   href: '^0.5.0' }
+84 verbose addNamed [ 'chalk', '^0.5.0' ]
+85 verbose addNamed [ null, '>=0.5.0-0 <0.6.0-0' ]
+86 silly lockFile c513ee84-chalk-0-5-0 chalk@^0.5.0
+87 verbose lock chalk@^0.5.0 /Users/kiyopikko/.npm/c513ee84-chalk-0-5-0.lock
+88 verbose cache add name="gulp-util" spec="^3.0.0" args=["gulp-util","^3.0.0"]
+89 verbose parsed url { protocol: null,
+89 verbose parsed url   slashes: null,
+89 verbose parsed url   auth: null,
+89 verbose parsed url   host: null,
+89 verbose parsed url   port: null,
+89 verbose parsed url   hostname: null,
+89 verbose parsed url   hash: null,
+89 verbose parsed url   search: null,
+89 verbose parsed url   query: null,
+89 verbose parsed url   pathname: '^3.0.0',
+89 verbose parsed url   path: '^3.0.0',
+89 verbose parsed url   href: '^3.0.0' }
+90 verbose addNamed [ 'gulp-util', '^3.0.0' ]
+91 verbose addNamed [ null, '>=3.0.0-0 <4.0.0-0' ]
+92 silly lockFile dfa9a863-gulp-util-3-0-0 gulp-util@^3.0.0
+93 verbose lock gulp-util@^3.0.0 /Users/kiyopikko/.npm/dfa9a863-gulp-util-3-0-0.lock
+94 verbose cache add [ 'interpret@^0.3.2', null ]
+95 verbose cache add name=undefined spec="interpret@^0.3.2" args=["interpret@^0.3.2",null]
+96 verbose parsed url { protocol: null,
+96 verbose parsed url   slashes: null,
+96 verbose parsed url   auth: null,
+96 verbose parsed url   host: null,
+96 verbose parsed url   port: null,
+96 verbose parsed url   hostname: null,
+96 verbose parsed url   hash: null,
+96 verbose parsed url   search: null,
+96 verbose parsed url   query: null,
+96 verbose parsed url   pathname: 'interpret@^0.3.2',
+96 verbose parsed url   path: 'interpret@^0.3.2',
+96 verbose parsed url   href: 'interpret@^0.3.2' }
+97 verbose cache add name="deprecated" spec="^0.0.1" args=["deprecated","^0.0.1"]
+98 verbose parsed url { protocol: null,
+98 verbose parsed url   slashes: null,
+98 verbose parsed url   auth: null,
+98 verbose parsed url   host: null,
+98 verbose parsed url   port: null,
+98 verbose parsed url   hostname: null,
+98 verbose parsed url   hash: null,
+98 verbose parsed url   search: null,
+98 verbose parsed url   query: null,
+98 verbose parsed url   pathname: '^0.0.1',
+98 verbose parsed url   path: '^0.0.1',
+98 verbose parsed url   href: '^0.0.1' }
+99 verbose addNamed [ 'deprecated', '^0.0.1' ]
+100 verbose addNamed [ null, '=0.0.1' ]
+101 silly lockFile 0e32a569-deprecated-0-0-1 deprecated@^0.0.1
+102 verbose lock deprecated@^0.0.1 /Users/kiyopikko/.npm/0e32a569-deprecated-0-0-1.lock
+103 silly addNameRange { name: 'archy', range: '>=1.0.0-0 <2.0.0-0', hasData: false }
+104 verbose cache add name="interpret" spec="^0.3.2" args=["interpret","^0.3.2"]
+105 verbose parsed url { protocol: null,
+105 verbose parsed url   slashes: null,
+105 verbose parsed url   auth: null,
+105 verbose parsed url   host: null,
+105 verbose parsed url   port: null,
+105 verbose parsed url   hostname: null,
+105 verbose parsed url   hash: null,
+105 verbose parsed url   search: null,
+105 verbose parsed url   query: null,
+105 verbose parsed url   pathname: '^0.3.2',
+105 verbose parsed url   path: '^0.3.2',
+105 verbose parsed url   href: '^0.3.2' }
+106 verbose addNamed [ 'interpret', '^0.3.2' ]
+107 verbose addNamed [ null, '>=0.3.2-0 <0.4.0-0' ]
+108 silly lockFile e5ecc112-interpret-0-3-2 interpret@^0.3.2
+109 verbose lock interpret@^0.3.2 /Users/kiyopikko/.npm/e5ecc112-interpret-0-3-2.lock
+110 verbose cache add [ 'liftoff@^0.13.2', null ]
+111 verbose cache add name=undefined spec="liftoff@^0.13.2" args=["liftoff@^0.13.2",null]
+112 verbose parsed url { protocol: null,
+112 verbose parsed url   slashes: null,
+112 verbose parsed url   auth: null,
+112 verbose parsed url   host: null,
+112 verbose parsed url   port: null,
+112 verbose parsed url   hostname: null,
+112 verbose parsed url   hash: null,
+112 verbose parsed url   search: null,
+112 verbose parsed url   query: null,
+112 verbose parsed url   pathname: 'liftoff@^0.13.2',
+112 verbose parsed url   path: 'liftoff@^0.13.2',
+112 verbose parsed url   href: 'liftoff@^0.13.2' }
+113 silly addNameRange { name: 'gulp-util',
+113 silly addNameRange   range: '>=3.0.0-0 <4.0.0-0',
+113 silly addNameRange   hasData: false }
+114 silly addNameRange { name: 'chalk', range: '>=0.5.0-0 <0.6.0-0', hasData: false }
+115 silly addNameRange { name: 'deprecated', range: '=0.0.1', hasData: false }
+116 verbose cache add [ 'minimist@^1.1.0', null ]
+117 verbose cache add name=undefined spec="minimist@^1.1.0" args=["minimist@^1.1.0",null]
+118 verbose parsed url { protocol: null,
+118 verbose parsed url   slashes: null,
+118 verbose parsed url   auth: null,
+118 verbose parsed url   host: null,
+118 verbose parsed url   port: null,
+118 verbose parsed url   hostname: null,
+118 verbose parsed url   hash: null,
+118 verbose parsed url   search: null,
+118 verbose parsed url   query: null,
+118 verbose parsed url   pathname: 'minimist@^1.1.0',
+118 verbose parsed url   path: 'minimist@^1.1.0',
+118 verbose parsed url   href: 'minimist@^1.1.0' }
+119 verbose cache add name="liftoff" spec="^0.13.2" args=["liftoff","^0.13.2"]
+120 verbose parsed url { protocol: null,
+120 verbose parsed url   slashes: null,
+120 verbose parsed url   auth: null,
+120 verbose parsed url   host: null,
+120 verbose parsed url   port: null,
+120 verbose parsed url   hostname: null,
+120 verbose parsed url   hash: null,
+120 verbose parsed url   search: null,
+120 verbose parsed url   query: null,
+120 verbose parsed url   pathname: '^0.13.2',
+120 verbose parsed url   path: '^0.13.2',
+120 verbose parsed url   href: '^0.13.2' }
+121 verbose addNamed [ 'liftoff', '^0.13.2' ]
+122 verbose addNamed [ null, '>=0.13.2-0 <0.14.0-0' ]
+123 silly lockFile 6823cb60-liftoff-0-13-2 liftoff@^0.13.2
+124 verbose lock liftoff@^0.13.2 /Users/kiyopikko/.npm/6823cb60-liftoff-0-13-2.lock
+125 silly addNameRange { name: 'interpret',
+125 silly addNameRange   range: '>=0.3.2-0 <0.4.0-0',
+125 silly addNameRange   hasData: false }
+126 verbose cache add [ 'orchestrator@^0.3.0', null ]
+127 verbose cache add name=undefined spec="orchestrator@^0.3.0" args=["orchestrator@^0.3.0",null]
+128 verbose parsed url { protocol: null,
+128 verbose parsed url   slashes: null,
+128 verbose parsed url   auth: null,
+128 verbose parsed url   host: null,
+128 verbose parsed url   port: null,
+128 verbose parsed url   hostname: null,
+128 verbose parsed url   hash: null,
+128 verbose parsed url   search: null,
+128 verbose parsed url   query: null,
+128 verbose parsed url   pathname: 'orchestrator@^0.3.0',
+128 verbose parsed url   path: 'orchestrator@^0.3.0',
+128 verbose parsed url   href: 'orchestrator@^0.3.0' }
+129 verbose cache add name="minimist" spec="^1.1.0" args=["minimist","^1.1.0"]
+130 verbose parsed url { protocol: null,
+130 verbose parsed url   slashes: null,
+130 verbose parsed url   auth: null,
+130 verbose parsed url   host: null,
+130 verbose parsed url   port: null,
+130 verbose parsed url   hostname: null,
+130 verbose parsed url   hash: null,
+130 verbose parsed url   search: null,
+130 verbose parsed url   query: null,
+130 verbose parsed url   pathname: '^1.1.0',
+130 verbose parsed url   path: '^1.1.0',
+130 verbose parsed url   href: '^1.1.0' }
+131 verbose addNamed [ 'minimist', '^1.1.0' ]
+132 verbose addNamed [ null, '>=1.1.0-0 <2.0.0-0' ]
+133 silly lockFile b7cda548-minimist-1-1-0 minimist@^1.1.0
+134 verbose lock minimist@^1.1.0 /Users/kiyopikko/.npm/b7cda548-minimist-1-1-0.lock
+135 verbose cache add [ 'pretty-hrtime@^0.2.0', null ]
+136 verbose cache add name=undefined spec="pretty-hrtime@^0.2.0" args=["pretty-hrtime@^0.2.0",null]
+137 verbose parsed url { protocol: null,
+137 verbose parsed url   slashes: null,
+137 verbose parsed url   auth: null,
+137 verbose parsed url   host: null,
+137 verbose parsed url   port: null,
+137 verbose parsed url   hostname: null,
+137 verbose parsed url   hash: null,
+137 verbose parsed url   search: null,
+137 verbose parsed url   query: null,
+137 verbose parsed url   pathname: 'pretty-hrtime@^0.2.0',
+137 verbose parsed url   path: 'pretty-hrtime@^0.2.0',
+137 verbose parsed url   href: 'pretty-hrtime@^0.2.0' }
+138 verbose cache add name="orchestrator" spec="^0.3.0" args=["orchestrator","^0.3.0"]
+139 verbose parsed url { protocol: null,
+139 verbose parsed url   slashes: null,
+139 verbose parsed url   auth: null,
+139 verbose parsed url   host: null,
+139 verbose parsed url   port: null,
+139 verbose parsed url   hostname: null,
+139 verbose parsed url   hash: null,
+139 verbose parsed url   search: null,
+139 verbose parsed url   query: null,
+139 verbose parsed url   pathname: '^0.3.0',
+139 verbose parsed url   path: '^0.3.0',
+139 verbose parsed url   href: '^0.3.0' }
+140 verbose addNamed [ 'orchestrator', '^0.3.0' ]
+141 verbose addNamed [ null, '>=0.3.0-0 <0.4.0-0' ]
+142 silly lockFile 74d9c599-orchestrator-0-3-0 orchestrator@^0.3.0
+143 verbose lock orchestrator@^0.3.0 /Users/kiyopikko/.npm/74d9c599-orchestrator-0-3-0.lock
+144 silly addNameRange { name: 'liftoff',
+144 silly addNameRange   range: '>=0.13.2-0 <0.14.0-0',
+144 silly addNameRange   hasData: false }
+145 verbose cache add [ 'tildify@^1.0.0', null ]
+146 verbose cache add name=undefined spec="tildify@^1.0.0" args=["tildify@^1.0.0",null]
+147 verbose parsed url { protocol: null,
+147 verbose parsed url   slashes: null,
+147 verbose parsed url   auth: null,
+147 verbose parsed url   host: null,
+147 verbose parsed url   port: null,
+147 verbose parsed url   hostname: null,
+147 verbose parsed url   hash: null,
+147 verbose parsed url   search: null,
+147 verbose parsed url   query: null,
+147 verbose parsed url   pathname: 'tildify@^1.0.0',
+147 verbose parsed url   path: 'tildify@^1.0.0',
+147 verbose parsed url   href: 'tildify@^1.0.0' }
+148 verbose cache add [ 'semver@^4.1.0', null ]
+149 verbose cache add name=undefined spec="semver@^4.1.0" args=["semver@^4.1.0",null]
+150 verbose parsed url { protocol: null,
+150 verbose parsed url   slashes: null,
+150 verbose parsed url   auth: null,
+150 verbose parsed url   host: null,
+150 verbose parsed url   port: null,
+150 verbose parsed url   hostname: null,
+150 verbose parsed url   hash: null,
+150 verbose parsed url   search: null,
+150 verbose parsed url   query: null,
+150 verbose parsed url   pathname: 'semver@^4.1.0',
+150 verbose parsed url   path: 'semver@^4.1.0',
+150 verbose parsed url   href: 'semver@^4.1.0' }
+151 verbose cache add name="pretty-hrtime" spec="^0.2.0" args=["pretty-hrtime","^0.2.0"]
+152 verbose parsed url { protocol: null,
+152 verbose parsed url   slashes: null,
+152 verbose parsed url   auth: null,
+152 verbose parsed url   host: null,
+152 verbose parsed url   port: null,
+152 verbose parsed url   hostname: null,
+152 verbose parsed url   hash: null,
+152 verbose parsed url   search: null,
+152 verbose parsed url   query: null,
+152 verbose parsed url   pathname: '^0.2.0',
+152 verbose parsed url   path: '^0.2.0',
+152 verbose parsed url   href: '^0.2.0' }
+153 verbose addNamed [ 'pretty-hrtime', '^0.2.0' ]
+154 verbose addNamed [ null, '>=0.2.0-0 <0.3.0-0' ]
+155 silly lockFile 3ac7556f-pretty-hrtime-0-2-0 pretty-hrtime@^0.2.0
+156 verbose lock pretty-hrtime@^0.2.0 /Users/kiyopikko/.npm/3ac7556f-pretty-hrtime-0-2-0.lock
+157 verbose cache add [ 'v8flags@^1.0.1', null ]
+158 verbose cache add name=undefined spec="v8flags@^1.0.1" args=["v8flags@^1.0.1",null]
+159 verbose parsed url { protocol: null,
+159 verbose parsed url   slashes: null,
+159 verbose parsed url   auth: null,
+159 verbose parsed url   host: null,
+159 verbose parsed url   port: null,
+159 verbose parsed url   hostname: null,
+159 verbose parsed url   hash: null,
+159 verbose parsed url   search: null,
+159 verbose parsed url   query: null,
+159 verbose parsed url   pathname: 'v8flags@^1.0.1',
+159 verbose parsed url   path: 'v8flags@^1.0.1',
+159 verbose parsed url   href: 'v8flags@^1.0.1' }
+160 verbose cache add name="tildify" spec="^1.0.0" args=["tildify","^1.0.0"]
+161 verbose parsed url { protocol: null,
+161 verbose parsed url   slashes: null,
+161 verbose parsed url   auth: null,
+161 verbose parsed url   host: null,
+161 verbose parsed url   port: null,
+161 verbose parsed url   hostname: null,
+161 verbose parsed url   hash: null,
+161 verbose parsed url   search: null,
+161 verbose parsed url   query: null,
+161 verbose parsed url   pathname: '^1.0.0',
+161 verbose parsed url   path: '^1.0.0',
+161 verbose parsed url   href: '^1.0.0' }
+162 verbose addNamed [ 'tildify', '^1.0.0' ]
+163 verbose addNamed [ null, '>=1.0.0-0 <2.0.0-0' ]
+164 silly lockFile b323af2b-tildify-1-0-0 tildify@^1.0.0
+165 verbose lock tildify@^1.0.0 /Users/kiyopikko/.npm/b323af2b-tildify-1-0-0.lock
+166 verbose cache add name="semver" spec="^4.1.0" args=["semver","^4.1.0"]
+167 verbose parsed url { protocol: null,
+167 verbose parsed url   slashes: null,
+167 verbose parsed url   auth: null,
+167 verbose parsed url   host: null,
+167 verbose parsed url   port: null,
+167 verbose parsed url   hostname: null,
+167 verbose parsed url   hash: null,
+167 verbose parsed url   search: null,
+167 verbose parsed url   query: null,
+167 verbose parsed url   pathname: '^4.1.0',
+167 verbose parsed url   path: '^4.1.0',
+167 verbose parsed url   href: '^4.1.0' }
+168 verbose addNamed [ 'semver', '^4.1.0' ]
+169 verbose addNamed [ null, '>=4.1.0-0 <5.0.0-0' ]
+170 silly lockFile 3aa770ad-semver-4-1-0 semver@^4.1.0
+171 verbose lock semver@^4.1.0 /Users/kiyopikko/.npm/3aa770ad-semver-4-1-0.lock
+172 silly addNameRange { name: 'minimist', range: '>=1.1.0-0 <2.0.0-0', hasData: false }
+173 silly addNameRange { name: 'orchestrator',
+173 silly addNameRange   range: '>=0.3.0-0 <0.4.0-0',
+173 silly addNameRange   hasData: false }
+174 verbose url raw archy
+175 verbose url resolving [ 'https://registry.npmjs.org/', './archy' ]
+176 verbose url resolved https://registry.npmjs.org/archy
+177 info trying registry request attempt 1 at 20:35:24
+178 verbose etag "B12RS02YUKX6NU4B9Z7Y9P4LW"
+179 http GET https://registry.npmjs.org/archy
+180 verbose cache add [ 'vinyl-fs@^0.3.0', null ]
+181 verbose cache add name=undefined spec="vinyl-fs@^0.3.0" args=["vinyl-fs@^0.3.0",null]
+182 verbose parsed url { protocol: null,
+182 verbose parsed url   slashes: null,
+182 verbose parsed url   auth: null,
+182 verbose parsed url   host: null,
+182 verbose parsed url   port: null,
+182 verbose parsed url   hostname: null,
+182 verbose parsed url   hash: null,
+182 verbose parsed url   search: null,
+182 verbose parsed url   query: null,
+182 verbose parsed url   pathname: 'vinyl-fs@^0.3.0',
+182 verbose parsed url   path: 'vinyl-fs@^0.3.0',
+182 verbose parsed url   href: 'vinyl-fs@^0.3.0' }
+183 verbose cache add name="v8flags" spec="^1.0.1" args=["v8flags","^1.0.1"]
+184 verbose parsed url { protocol: null,
+184 verbose parsed url   slashes: null,
+184 verbose parsed url   auth: null,
+184 verbose parsed url   host: null,
+184 verbose parsed url   port: null,
+184 verbose parsed url   hostname: null,
+184 verbose parsed url   hash: null,
+184 verbose parsed url   search: null,
+184 verbose parsed url   query: null,
+184 verbose parsed url   pathname: '^1.0.1',
+184 verbose parsed url   path: '^1.0.1',
+184 verbose parsed url   href: '^1.0.1' }
+185 verbose addNamed [ 'v8flags', '^1.0.1' ]
+186 verbose addNamed [ null, '>=1.0.1-0 <2.0.0-0' ]
+187 silly lockFile e8e5fda9-v8flags-1-0-1 v8flags@^1.0.1
+188 verbose lock v8flags@^1.0.1 /Users/kiyopikko/.npm/e8e5fda9-v8flags-1-0-1.lock
+189 verbose url raw gulp-util
+190 verbose url resolving [ 'https://registry.npmjs.org/', './gulp-util' ]
+191 verbose url resolved https://registry.npmjs.org/gulp-util
+192 info trying registry request attempt 1 at 20:35:24
+193 verbose etag "1X3ADUSTJ7RFDTYTGZ62E8V20"
+194 http GET https://registry.npmjs.org/gulp-util
+195 verbose url raw deprecated
+196 verbose url resolving [ 'https://registry.npmjs.org/', './deprecated' ]
+197 verbose url resolved https://registry.npmjs.org/deprecated
+198 info trying registry request attempt 1 at 20:35:24
+199 verbose etag "COB5QI8XPTQRTPBUIWG8OOYD0"
+200 http GET https://registry.npmjs.org/deprecated
+201 verbose url raw chalk
+202 verbose url resolving [ 'https://registry.npmjs.org/', './chalk' ]
+203 verbose url resolved https://registry.npmjs.org/chalk
+204 info trying registry request attempt 1 at 20:35:24
+205 verbose etag "3N74MMDNB4K92PPTZUBPG5N8R"
+206 http GET https://registry.npmjs.org/chalk
+207 silly addNameRange { name: 'pretty-hrtime',
+207 silly addNameRange   range: '>=0.2.0-0 <0.3.0-0',
+207 silly addNameRange   hasData: false }
+208 verbose cache add name="vinyl-fs" spec="^0.3.0" args=["vinyl-fs","^0.3.0"]
+209 verbose parsed url { protocol: null,
+209 verbose parsed url   slashes: null,
+209 verbose parsed url   auth: null,
+209 verbose parsed url   host: null,
+209 verbose parsed url   port: null,
+209 verbose parsed url   hostname: null,
+209 verbose parsed url   hash: null,
+209 verbose parsed url   search: null,
+209 verbose parsed url   query: null,
+209 verbose parsed url   pathname: '^0.3.0',
+209 verbose parsed url   path: '^0.3.0',
+209 verbose parsed url   href: '^0.3.0' }
+210 verbose addNamed [ 'vinyl-fs', '^0.3.0' ]
+211 verbose addNamed [ null, '>=0.3.0-0 <0.4.0-0' ]
+212 silly lockFile f9e5bbec-vinyl-fs-0-3-0 vinyl-fs@^0.3.0
+213 verbose lock vinyl-fs@^0.3.0 /Users/kiyopikko/.npm/f9e5bbec-vinyl-fs-0-3-0.lock
+214 silly addNameRange { name: 'tildify', range: '>=1.0.0-0 <2.0.0-0', hasData: false }
+215 silly addNameRange { name: 'semver', range: '>=4.1.0-0 <5.0.0-0', hasData: false }
+216 verbose url raw interpret
+217 verbose url resolving [ 'https://registry.npmjs.org/', './interpret' ]
+218 verbose url resolved https://registry.npmjs.org/interpret
+219 info trying registry request attempt 1 at 20:35:24
+220 verbose etag "31VK3QHHLIP7R53LCJPLMDDNV"
+221 http GET https://registry.npmjs.org/interpret
+222 silly addNameRange { name: 'v8flags', range: '>=1.0.1-0 <2.0.0-0', hasData: false }
+223 silly addNameRange { name: 'vinyl-fs', range: '>=0.3.0-0 <0.4.0-0', hasData: false }
+224 verbose url raw liftoff
+225 verbose url resolving [ 'https://registry.npmjs.org/', './liftoff' ]
+226 verbose url resolved https://registry.npmjs.org/liftoff
+227 info trying registry request attempt 1 at 20:35:24
+228 verbose etag "D6HW5PJAKBKYYUU4CD8T9J57Y"
+229 http GET https://registry.npmjs.org/liftoff
+230 verbose url raw minimist
+231 verbose url resolving [ 'https://registry.npmjs.org/', './minimist' ]
+232 verbose url resolved https://registry.npmjs.org/minimist
+233 info trying registry request attempt 1 at 20:35:24
+234 verbose etag "ABVTDSMUCKOKVZH0M8WSWE8E8"
+235 http GET https://registry.npmjs.org/minimist
+236 verbose url raw orchestrator
+237 verbose url resolving [ 'https://registry.npmjs.org/', './orchestrator' ]
+238 verbose url resolved https://registry.npmjs.org/orchestrator
+239 info trying registry request attempt 1 at 20:35:24
+240 verbose etag "4XHCUJR3DC7TFUZSBMNYDQK4T"
+241 http GET https://registry.npmjs.org/orchestrator
+242 verbose url raw pretty-hrtime
+243 verbose url resolving [ 'https://registry.npmjs.org/', './pretty-hrtime' ]
+244 verbose url resolved https://registry.npmjs.org/pretty-hrtime
+245 info trying registry request attempt 1 at 20:35:24
+246 verbose etag "1QXPURLDSZN3T9733C7PTBCOY"
+247 http GET https://registry.npmjs.org/pretty-hrtime
+248 verbose url raw tildify
+249 verbose url resolving [ 'https://registry.npmjs.org/', './tildify' ]
+250 verbose url resolved https://registry.npmjs.org/tildify
+251 info trying registry request attempt 1 at 20:35:24
+252 verbose etag "2JE1KRFER7QQ9BZAYAJISAI0V"
+253 http GET https://registry.npmjs.org/tildify
+254 verbose url raw semver
+255 verbose url resolving [ 'https://registry.npmjs.org/', './semver' ]
+256 verbose url resolved https://registry.npmjs.org/semver
+257 info trying registry request attempt 1 at 20:35:24
+258 verbose etag "6B6V73Z8Z2VDWLIDVGMRWG8PJ"
+259 http GET https://registry.npmjs.org/semver
+260 verbose url raw v8flags
+261 verbose url resolving [ 'https://registry.npmjs.org/', './v8flags' ]
+262 verbose url resolved https://registry.npmjs.org/v8flags
+263 info trying registry request attempt 1 at 20:35:24
+264 verbose etag "233LN5MJ5J4PTGVWAJOSV9HME"
+265 http GET https://registry.npmjs.org/v8flags
+266 verbose url raw vinyl-fs
+267 verbose url resolving [ 'https://registry.npmjs.org/', './vinyl-fs' ]
+268 verbose url resolved https://registry.npmjs.org/vinyl-fs
+269 info trying registry request attempt 1 at 20:35:24
+270 verbose etag "458M3HKM5ZVM60A53YM3JXPV"
+271 http GET https://registry.npmjs.org/vinyl-fs
+272 http 200 https://registry.npmjs.org/deprecated
+273 silly registry.get cb [ 200,
+273 silly registry.get   { date: 'Mon, 02 Feb 2015 11:35:24 GMT',
+273 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+273 silly registry.get     etag: '"ASSCZKMT9XMH89XIWRI1VOGW1"',
+273 silly registry.get     'content-type': 'application/json',
+273 silly registry.get     'cache-control': 'max-age=60',
+273 silly registry.get     'content-length': '1710',
+273 silly registry.get     'accept-ranges': 'bytes',
+273 silly registry.get     via: '1.1 varnish',
+273 silly registry.get     age: '4',
+273 silly registry.get     'x-served-by': 'cache-ty68-TYO',
+273 silly registry.get     'x-cache': 'HIT',
+273 silly registry.get     'x-cache-hits': '1',
+273 silly registry.get     'x-timer': 'S1422876924.188703,VS0,VE0',
+273 silly registry.get     vary: 'Accept',
+273 silly registry.get     'keep-alive': 'timeout=10, max=50',
+273 silly registry.get     connection: 'Keep-Alive' } ]
+274 silly addNameRange number 2 { name: 'deprecated', range: '=0.0.1', hasData: true }
+275 silly addNameRange versions [ 'deprecated', [ '0.0.1' ] ]
+276 verbose addNamed [ 'deprecated', '0.0.1' ]
+277 verbose addNamed [ '0.0.1', '0.0.1' ]
+278 silly lockFile 9bc38d85-deprecated-0-0-1 deprecated@0.0.1
+279 verbose lock deprecated@0.0.1 /Users/kiyopikko/.npm/9bc38d85-deprecated-0-0-1.lock
+280 silly lockFile 9bc38d85-deprecated-0-0-1 deprecated@0.0.1
+281 silly lockFile 9bc38d85-deprecated-0-0-1 deprecated@0.0.1
+282 silly lockFile 0e32a569-deprecated-0-0-1 deprecated@^0.0.1
+283 silly lockFile 0e32a569-deprecated-0-0-1 deprecated@^0.0.1
+284 http 200 https://registry.npmjs.org/chalk
+285 silly registry.get cb [ 200,
+285 silly registry.get   { date: 'Mon, 02 Feb 2015 11:35:24 GMT',
+285 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+285 silly registry.get     etag: '"9D75NBECJ5JICEEERF85R0YBK"',
+285 silly registry.get     'content-type': 'application/json',
+285 silly registry.get     'cache-control': 'max-age=60',
+285 silly registry.get     'content-length': '17567',
+285 silly registry.get     'accept-ranges': 'bytes',
+285 silly registry.get     via: '1.1 varnish',
+285 silly registry.get     age: '31',
+285 silly registry.get     'x-served-by': 'cache-ty67-TYO',
+285 silly registry.get     'x-cache': 'HIT',
+285 silly registry.get     'x-cache-hits': '9',
+285 silly registry.get     'x-timer': 'S1422876924.191527,VS0,VE0',
+285 silly registry.get     vary: 'Accept',
+285 silly registry.get     'keep-alive': 'timeout=10, max=50',
+285 silly registry.get     connection: 'Keep-Alive' } ]
+286 http 200 https://registry.npmjs.org/interpret
+287 silly registry.get cb [ 200,
+287 silly registry.get   { date: 'Mon, 02 Feb 2015 11:35:24 GMT',
+287 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+287 silly registry.get     etag: '"AS0K07WJDKCLHBVHIR4EH0PUD"',
+287 silly registry.get     'content-type': 'application/json',
+287 silly registry.get     'cache-control': 'max-age=60',
+287 silly registry.get     'content-length': '23384',
+287 silly registry.get     'accept-ranges': 'bytes',
+287 silly registry.get     via: '1.1 varnish',
+287 silly registry.get     age: '4',
+287 silly registry.get     'x-served-by': 'cache-ty68-TYO',
+287 silly registry.get     'x-cache': 'HIT',
+287 silly registry.get     'x-cache-hits': '2',
+287 silly registry.get     'x-timer': 'S1422876924.189891,VS0,VE0',
+287 silly registry.get     vary: 'Accept',
+287 silly registry.get     'keep-alive': 'timeout=10, max=50',
+287 silly registry.get     connection: 'Keep-Alive' } ]
+288 silly addNameRange number 2 { name: 'chalk', range: '>=0.5.0-0 <0.6.0-0', hasData: true }
+289 silly addNameRange versions [ 'chalk',
+289 silly addNameRange   [ '0.1.0',
+289 silly addNameRange     '0.1.1',
+289 silly addNameRange     '0.2.0',
+289 silly addNameRange     '0.2.1',
+289 silly addNameRange     '0.3.0',
+289 silly addNameRange     '0.4.0',
+289 silly addNameRange     '0.5.0',
+289 silly addNameRange     '0.5.1' ] ]
+290 verbose addNamed [ 'chalk', '0.5.1' ]
+291 verbose addNamed [ '0.5.1', '0.5.1' ]
+292 silly lockFile c28973bb-chalk-0-5-1 chalk@0.5.1
+293 verbose lock chalk@0.5.1 /Users/kiyopikko/.npm/c28973bb-chalk-0-5-1.lock
+294 silly addNameRange number 2 { name: 'interpret', range: '>=0.3.2-0 <0.4.0-0', hasData: true }
+295 silly addNameRange versions [ 'interpret',
+295 silly addNameRange   [ '0.1.0',
+295 silly addNameRange     '0.2.0',
+295 silly addNameRange     '0.3.0',
+295 silly addNameRange     '0.3.1',
+295 silly addNameRange     '0.3.2',
+295 silly addNameRange     '0.3.3',
+295 silly addNameRange     '0.3.4',
+295 silly addNameRange     '0.3.5',
+295 silly addNameRange     '0.3.6',
+295 silly addNameRange     '0.3.7',
+295 silly addNameRange     '0.3.8',
+295 silly addNameRange     '0.3.9',
+295 silly addNameRange     '0.3.10',
+295 silly addNameRange     '0.4.0',
+295 silly addNameRange     '0.4.1',
+295 silly addNameRange     '0.4.2' ] ]
+296 verbose addNamed [ 'interpret', '0.3.10' ]
+297 verbose addNamed [ '0.3.10', '0.3.10' ]
+298 silly lockFile 06319a3e-interpret-0-3-10 interpret@0.3.10
+299 verbose lock interpret@0.3.10 /Users/kiyopikko/.npm/06319a3e-interpret-0-3-10.lock
+300 silly lockFile 06319a3e-interpret-0-3-10 interpret@0.3.10
+301 silly lockFile 06319a3e-interpret-0-3-10 interpret@0.3.10
+302 silly lockFile c28973bb-chalk-0-5-1 chalk@0.5.1
+303 silly lockFile c28973bb-chalk-0-5-1 chalk@0.5.1
+304 silly lockFile e5ecc112-interpret-0-3-2 interpret@^0.3.2
+305 silly lockFile e5ecc112-interpret-0-3-2 interpret@^0.3.2
+306 silly lockFile c513ee84-chalk-0-5-0 chalk@^0.5.0
+307 silly lockFile c513ee84-chalk-0-5-0 chalk@^0.5.0
+308 verbose about to build /Users/kiyopikko/node_modules/gulp
+309 info /Users/kiyopikko/node_modules/gulp unbuild
+310 info preuninstall gulp@3.8.10
+311 info uninstall gulp@3.8.10
+312 verbose true,/Users/kiyopikko/node_modules,/Users/kiyopikko/node_modules unbuild gulp@3.8.10
+313 verbose /Users/kiyopikko/node_modules/.bin,[object Object] binRoot
+314 info postuninstall gulp@3.8.10
+315 error Error: EACCES, open '/Users/kiyopikko/.npm/interpret/0.3.10/package/package.json'
+315 error  { [Error: EACCES, open '/Users/kiyopikko/.npm/interpret/0.3.10/package/package.json']
+315 error   errno: 3,
+315 error   code: 'EACCES',
+315 error   path: '/Users/kiyopikko/.npm/interpret/0.3.10/package/package.json',
+315 error   parent: 'gulp' }
+316 error Please try running this command again as root/Administrator.
+317 error System Darwin 13.4.0
+318 error command "node" "/usr/local/bin/npm" "install" "--save-dev" "gulp"
+319 error cwd /Users/kiyopikko/rize
+320 error node -v v0.10.29
+321 error npm -v 1.4.14
+322 error path /Users/kiyopikko/.npm/interpret/0.3.10/package/package.json
+323 error code EACCES
+324 error errno 3
+325 error stack Error: EACCES, open '/Users/kiyopikko/.npm/interpret/0.3.10/package/package.json'
+326 verbose exit [ 3, true ]

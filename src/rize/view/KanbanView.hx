@@ -12,19 +12,29 @@ using rize.model.Kanban.StateUtil;
 ))
 class DeveloperForm{}
 
+@:build(mage.CompileCSS.generate(
+"package rize.view.kanban;
 
+dt,dd {
+	color: #999;
+}
+.title, .developer{
+	color: #222;
+}
+
+"))
 @:build(mage.CompileHTML.generate(
 "package rize.view.kanban;
-	
+
 <dl>
 	<dt>カンバン名</dt>
-	<dd>{{title}}</dd>
+	<dd class='title'>{{title}}</dd>
 	<dt>詳細</dt>
 	<dd>{{comment}}</dd>
 	<dt>作成者</dt>
 	<dd>{{author}}</dd>
 	<dt>開発者</dt>
-	<dd><input type='text' mage-var=developer/></dd>
+	<dd class='developer'><input type='text' mage-var=developer/></dd>
 	<dt>状態</dt>
 	<dd>{{state}}</dd>
 	<dt>登録時</dt>
@@ -68,7 +78,7 @@ class KanbanView{
 
 		if(model.endDate != null){
 			this.endDate.nodeValue = model.endDate.toString();
-			this.wip.nodeValue = model.wip;		
+			this.wip.nodeValue = model.wip;
 		}
 
 		if(model.state == Finish && this.updateBtn != null)

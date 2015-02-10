@@ -3,13 +3,12 @@ package rize.view;
 import rize.model.Account;
 import rize.controller.AccountController;
 
-
 @:build(mage.CompileHTML.generate(
-"package rize.view
+"package rize.view;
 
 <div>
 	<dl>
-		<dt>email</dt>
+		<dt class=strong>email</dt>
 		<dd><input type=text mage-var=email /></dd>
 		<dt>password</dt>
 		<dd><input type=password mage-var=pass ></dd>
