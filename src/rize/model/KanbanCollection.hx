@@ -1,115 +1,81 @@
 package rize.model;
-import mlkcca.MilkCocoa;
 
+import mlkcca.DataStore;
+import rize.model.Kanban.State;
+using Lambda;
 
-class KanbanCollection {
-	public var cocoa:MilkCocoa;
-	public var kanbanDataStore:mlkcca.DataStore;
-	public var data:Array<rize.model.Kanban>;
+class KanbanCollection extends Model{
+	public var collection(get,null):Array<rize.model.Kanban>;
+	public var dataStore : DataStore;
 
-	public function new(c:MilkCocoa){
-		cocoa = c;
-		kanbanDataStore = cocoa.dataStore("kanbanCollection");
+	private var state : State;
+	private var col:Array<rize.model.Kanban>; 
+
+	public function new(dataStore){
+		this.col = [];
+		this.state = Regist;
+		this.dataStore = dataStore;
+		this.dataStore.on("set",this.on_set);
+		this.dataStore.on("remove",this.on_remove);
+		this.reload();
 	}
 
-	public function push(k:rize.model.Kanban,callback){
-		if(k.id != null) kanbanDataStore.remove(k.id);
-		kanbanDataStore.push({
-			title : k.title,
-			start : k.start,
-			end   : k.end,
-			auth  : k.auth,
-			entry : k.entry,
-			state : k.state
-		});
-		callback();
-	}
-	
-	public function loadData(callback){
-		data = new Array<rize.model.Kanban>();
-		var query = kanbanDataStore.query();
-		query.done(function(d:Array<Dynamic>){
-			trace(d);
-			for(i in 0...d.length){
-				data.push(Kanban.restore(d[i]));
-			}
-			callback(data);
-		});
-	}
-
-	public function remove(id:Dynamic,callback){
-		kanbanDataStore.remove(id);
-		var tmp = data.filter(function(d){
-			return d.id == id;
-		});
-		for(i in tmp){
-			data.remove(i);
-		}
-		var developerCollection = new rize.model.DeveloperCollection(cocoa);
-		developerCollection.removeKanban(id,callback);
-	}
-
-	public function change(id:String,change:Dynamic,callback){
-		kanbanDataStore.set(id,change);
-		callback();
-	}
-
-	public function changeState(id:String,callback){
-		var tmp = data.filter(function(d){
-			return d.id == id;
-		});
-		for(i in tmp){
-			var index = data.indexOf(i);
-			trace(data[index]);
-			data[index].toNextState();
-			trace(data[index]);
-			kanbanDataStore.set(id,{state:data[index].state});
-		}
-		trace("fin");
-		callback();
-	}
-
-	public function changeAuth(id:String,developerID:String,callback){
-		kanbanDataStore.set(id,{auth:developerID});
-		var tmp = data.filter(function(d){
-			return d.id == id;
-		});
-		for(i in tmp){
-			var index = data.indexOf(i);
-			data[index].auth = developerID;
-		}
-		callback();
-	}
-
-	public function removeAuth(authID:String,callback){
-		loadData(function(data){
-			for(i in data){
-				trace(i);
-				if(i.auth == authID){
-					i.auth = "removed";
-				}
-				trace(i);
-				push(i,function()return);
-			}
-			callback();
-		});
-	}
-
-	public function find(title:String,callback:Array<Dynamic>->Void){
-		loadData(function(data){
-			var res = data.filter(function(d){
-				return d.title == title;
+	private function reload(){
+		this.dataStore.query().done(function(data){
+			this.col = data.map(function(d){
+				var serializedObject = Kanban.unserialized(d.kanban);
+				return Kanban.toKanban(this.dataStore,serializedObject);
 			});
-			callback(res);
+			this.changed();
 		});
 	}
 
-	public function findById(id:String,callback:Array<Dynamic>->Void){
-		loadData(function(data){
-			var res = data.filter(function(d){
-				return d.id == id;
-			});
-			callback(res);
-		});
+	private function on_set(data){
+		var serializedObject = Kanban.unserialized(data.value.kanban);
+		for(havedKanban in this.col){
+			if( havedKanban.id == serializedObject.id ){				
+				havedKanban.set(serializedObject);
+				this.changed();
+				return;
+			}
+		}
+		var kanban = Kanban.toKanban(this.dataStore,serializedObject);
+		this.col.unshift(kanban);
+		this.changed();
+	}
+
+	private function on_remove(data){
+		var kanban = this.getKanban(data.id);
+		if(this.col.remove(kanban)) this.changed();
+	}
+
+	public function addKanban(name,comment, author, ?developer){
+		var kanban = new Kanban(this.dataStore, name, comment, author);
+		if( developer != null ) kanban.setDeveloper(developer);
+		this.col.unshift(kanban);
+		this.changed();
+		kanban.save();
+	}
+
+	public function removeKanban(id:String){
+		this.dataStore.remove(id);
+	}
+
+	private function getKanban(id:String){
+		for( c in this.col){
+			if( c.id == id ){
+				return c;
+			}
+		}
+		return null;
+	}
+
+	private function get_collection(){
+		return this.col.filter(function(c) return c.state == this.state);
+	}
+
+	public function changeState(state){
+		this.state = state;
+		this.changed();
 	}
 }

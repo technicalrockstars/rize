@@ -1,31 +1,42 @@
 package rize;
 
+
 import rize.model.*;
+import rize.view.*;
 import rize.controller.*;
-import rize.view.KanbanTableView;
-import rize.view.DeveloperTableView;
 import mlkcca.MilkCocoa;
 
-
-//登録　一覧　更新
+typedef Config = {
+	milkcocoa_id : String,
+	slack : {
+		url : String,
+		channel : String,
+		name : String
+	}
+}
 
 class Main{
+	public var controller = null;
+
+	public static var config : Config = CompileTime.parseJsonFile("config.json");
+
 	public static function main(){
-		var milkcocoa = new MilkCocoa("io-ui2316wnm");
 		js.Browser.window.addEventListener("load",function(e){
 
-			var messageDataStore = milkcocoa.dataStore('message');
+
+			var milkcocoa = new MilkCocoa(Main.config.milkcocoa_id);
+			var dataStore = milkcocoa.dataStore("kanban");
+
+			var kanbanTableView = new KanbanTableView();
+			var kanbanCollection = new KanbanCollection(dataStore);
+			var controller = new KanbanTableController(kanbanTableView, kanbanCollection);
+
+
+			var account = new Account(milkcocoa);
+			var accountView = new AccountView(account,kanbanTableView);
+			var accountController = new AccountController(accountView,account);
 			
-			var developerTableController = new DeveloperTableController(milkcocoa);
-			js.Browser.document.body.appendChild(developerTableController.makeView());
-			
-			var tagTableController = new TagTableController(milkcocoa);
-			js.Browser.document.body.appendChild(tagTableController.makeView());
-			
-			var kanbanTableController = new KanbanTableController(milkcocoa);
-			js.Browser.document.body.appendChild(kanbanTableController.makeView());
-			
-			
+			js.Browser.document.body.appendChild(accountView.nodes[0]);
 		});
 	}
 }

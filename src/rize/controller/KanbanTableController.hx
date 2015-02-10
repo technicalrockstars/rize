@@ -1,100 +1,61 @@
 package rize.controller;
 
-import rize.model.*;
+import rize.model.KanbanCollection;
+import rize.model.Kanban;
 import rize.view.KanbanTableView;
-import rize.view.DeveloperTableView;
-import mlkcca.MilkCocoa;
+import rize.view.KanbanTableView.ChildView;
+using Lambda;
 
 class KanbanTableController{
-	var milkcocoa : MilkCocoa;
-	var kanbanCollection: KanbanCollection;
+	private var model : KanbanCollection;
+	private var view : KanbanTableView;
 
-	public function new(mlk:MilkCocoa){
-		milkcocoa = mlk;
-		kanbanCollection = new KanbanCollection(milkcocoa);
+	public function new(view, model){
+		this.view = view;
+		this.model = model;
+		this.setup();
 	}
 
-	public function makeView(){
-		var kanbanTableView = new KanbanTableView();
-			
-		kanbanCollection.loadData(function(kanbanArray){
-			trace("response data size ::"+kanbanArray.length);
-			for(kanban in kanbanArray){
-				kanbanTableView.children.appendChild(makeKanbanView(kanban));
+	public function setup(){
+		this.view.setup(this.model,this);
+		this.view.submitButton.addEventListener("click",function(e){
+			var name = this.view.form.name.value;
+			var comment = this.view.form.comment.value;
+			var author = this.view.form.author.value;
+			var developer = this.view.form.developer.value;
+			if( this.validates([name,comment,author]) ){
+				this.model.addKanban(name,comment,author,if(developer != null) developer else null);
+			}else{
+				js.Browser.window.alert("なんかおかしい");
 			}
 		});
 
-		kanbanTableView.input.addEventListener("change",function(e){
-			var kanban = new Kanban(kanbanTableView.input.value);
-			kanbanCollection.push(kanban,function(){
-				js.Browser.window.location.reload();
+		for(c in this.view.radio.children){
+			c.addEventListener("click",function(event){
+				switch(event.target.value){
+					case "regist" : this.model.changeState(Regist);
+					case "work" : this.model.changeState(Work);
+					case "finish" : this.model.changeState(Finish);
+					case _ : 
+				}
 			});
-		});
-
-		kanbanTableView.makeButton.addEventListener("click",function(e){
-			var kanban = new Kanban(kanbanTableView.input.value);
-			kanbanCollection.push(kanban,function(){
-				js.Browser.window.location.reload();
-			});
-		});
-
-		kanbanTableView.reloadButton.addEventListener("click",function(e){
-			js.Browser.window.location.reload();
-		});
-		
-		return (kanbanTableView.nodes[0]);	
+		}
 	}
 
-	public function makeKanbanView(kanban:rize.model.Kanban){
-		var developerCollection = new rize.model.DeveloperCollection(milkcocoa);
-		var authName = kanban.auth;
+	public function setEvent(childView : ChildView){
+		childView.removeBtn.addEventListener("click",function(event){
+			if( js.Browser.window.confirm("本当に削除するぽよ?") )
+				this.model.removeKanban(childView.id);
+		});
+	}
 
+
+
+
+	private function validate(input : String)
+		return input != null && input != "";
+
+	private function validates(inputs : Array<String>) 
+		return inputs.map(this.validate).fold(function(input,acc) return input && acc, true);
 	
-		var kanbanView = new KanbanView({
-			startDate : kanban.getStartString(),
-			endDate : kanban.getEndString(),
-			title:kanban.title,
-			authName:authName,
-			entry:kanban.getEntryString(),
-			state:kanban.stateString(),
-		});
-
-		developerCollection.findById(kanban.auth,function(data){
-			developerCollection.notify(data);
-		});
-		kanbanView.id = kanban.id;
-		developerCollection.addListener(kanbanView);
-		
-		var reload = function(){
-			js.Browser.window.location.reload();
-		};
-
-		kanbanView.changeTitleButton.addEventListener("click",function(e){
-			kanbanCollection.change(kanbanView.id,{title:kanbanView.changeTitleText.value},reload);
-		});
-				
-		kanbanView.nextStateButton.addEventListener("click",function(e){
-			kanbanCollection.changeState(kanbanView.id,reload);
-		});
-				
-		kanbanView.changeAuthButton.addEventListener("click",function(e){
-			var developerCollection = new rize.model.DeveloperCollection(milkcocoa);
-			developerCollection.findName(kanbanView.changeAuthText.value,function(id){
-				kanbanCollection.changeAuth(kanbanView.id,id[0],reload);
-			});
-		});
-				
-		kanbanView.setStartDate.addEventListener("click",function(e){
-			kanbanCollection.change(kanbanView.id,{start:Date.now()},reload);
-		});
-
-		kanbanView.setEndDate.addEventListener("click",function(e){
-			kanbanCollection.change(kanbanView.id,{end:Date.now()},reload);
-		});
-
-		kanbanView.removeButton.addEventListener("click",function(e){
-			kanbanCollection.remove(kanbanView.id,reload);
-		});
-		return kanbanView.nodes[0];
-	}
 }

@@ -1,5 +1,7 @@
 -main DeveloperSpec
 -cp .
+-lib Mage
+-lib milkcocoa-hx
 -lib buddy
 -cp ../src/
---interp
+-js main.js

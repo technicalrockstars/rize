@@ -1,9 +1,11 @@
 package ;
 
-import rize.model.*;
+import rize.model.Kanban;
+import rize.model.Kanban.State;
 
 import buddy.Buddy;
 import buddy.BuddySuite;
+import haxe.Timer;
 using buddy.Should;
 
 
@@ -11,40 +13,21 @@ using buddy.Should;
 class KanbanSpec extends BuddySuite implements Buddy{
 	public function new(){
 		describe("KanbanSpec",{
-			var dev : rize.model.Kanban;
-			it("when constructing Kanban",{
-				dev = new rize.model.Kanban("test");
-				dev.entry.getSeconds().should.be(Date.now().getSeconds());
-				dev.title.should.be("test");
+
+			it("state spec",function(done){
+				var kanban : Kanban = new Kanban("title","comment","nobkz");
+				kanban.state.should.be(State.Regist);
+				kanban.work();
+				kanban.state.should.be(State.Work);
+
+				Timer.delay(function(){
+					kanban.finish();
+					kanban.state.should.be(State.Finish);
+					var result = kanban.caluculateWip();
+					Std.int(result/1000).should.be(1);
+					done();
+					},1000);
 			});
-
-			it("Kanban transition spec",{
-				dev = new rize.model.Kanban("test");
-
-				dev.isWork().should.be(false);
-				dev.isFinish().should.be(false);
-
-				dev.work().should.be(true);
-				
-				dev.isWork().should.be(true);
-				dev.isFinish().should.be(false);
-				
-				dev.finish().should.be(true);
-				
-				dev.isWork().should.be(false);
-				dev.isFinish().should.be(true);
-			});
-
-			it("Kanban transition faled spec",{
-				dev = new rize.model.Kanban("test");
-
-				dev.finish().should.be(false);
-				dev.work().should.be(true);
-				dev.finish().should.be(true);
-				dev.work().should.be(false);
-				dev.finish().should.be(false);
-			});
-
 		});
 	}
 }

@@ -1,54 +1,88 @@
 package rize.view;
 
 
-@:build(mage.CompileHTML.generate(
-"package rize.view
+import rize.model.KanbanCollection;
+import rize.controller.KanbanVC;
+import rize.controller.KanbanTableController;
 
-<div>
-	input new kanban name:<input type=text mage-var=input>
-	<input type=button mage-var=makeButton value=make>
-	<input type=button mage-var=reloadButton value=reload>
-	<div mage-var=children></div>
+@:build(mage.CompileCSS.generate(
+"package rize.view.kanban.child;
+
+.record {
+	float : left;
+}"))
+@:build(mage.CompileHTML.generate(
+"package rize.view.kanban.child;
+
+<div class=record mage-var=content>
+	<button mage-var=removeBtn>削除</button>
 </div>"
 ))
-class KanbanTableView{}
-
-@:build(mage.CompileHTML.generate(
-"package rize.view
-
-<div>
-	<ul>
-		title :: <bar>{{title}}</bar>
-			<input type=text mage-var=changeTitleText>
-			<input type=button mage-var=changeTitleButton value=changeTitle>
-		<br>
-
-		entry :: <bar>{{entry}}</bar>
-		<br>
-
-		state :: <bar>{{state}}</bar>
-			<input type=button mage-var=nextStateButton value=next>
-		<br>
-		
-		auth  :: <bar>{{authName}}</bar> 
-			<input type=text mage-var=changeAuthText>
-			<input type=button mage-var=changeAuthButton value=changeAuth >
-		<br> 
-		
-		start :: <bar>{{startDate}}</bar>
-			<input type=button mage-var=setStartDate value=setDate>
-		<br>
-
-		end   :: <bar>{{endDate}}</bar>
-			<input type=button mage-var=setEndDate value=setDate>
-		<br>
-		<input type=button mage-var=removeButton value=delete>
-	</ul>
-</div>"
-))
-class KanbanView{
+class ChildView{
 	public var id : String;
-	public function update(data:rize.model.Developer){
-		authName.nodeValue = data.name;
+}
+
+@:build(mage.CompileHTML.generate(
+"package rize.view
+
+<div>
+	<div mage-var=inputform></div>
+	<div mage-var=radio>
+		<input type=radio name=state value=regist checked=true>regist
+		<input type=radio name=state value=work>work
+		<input type=radio name=state value=finish>finish
+	</div>
+	<div mage-var=children></div>
+
+</div>"
+))
+class KanbanTableFrame{}
+
+class KanbanTableView extends KanbanTableFrame{
+	private var model : KanbanCollection = null;
+	private var controller : KanbanTableController;
+	public var submitButton : js.html.ButtonElement;
+	public var form : KanbanFormView;
+
+	public function new(){
+		super();
+		this.form = new KanbanFormView();
+		this.inputform.appendChild(form.nodes[0]);
+		this.submitButton = form.updateBtn;
 	}
+
+	public function setup(model, controller){
+		this.controller = controller;
+		this.model = model;
+		this.model.addObserver(this);
+		this.update();
+	}
+
+
+	public function update(){
+		this.removeAll();
+		var childrenView = this.model.collection.map(function(kanban){
+			var kanbanView = new KanbanView();
+			var kanbanVC = new KanbanVC(kanbanView, kanban);
+			var childView = new ChildView();
+			childView.id = kanban.id;
+			childView.content.insertBefore(kanbanView.nodes[0],childView.removeBtn);
+			this.controller.setEvent(childView);
+			return childView;
+		});
+
+
+		for(c in childrenView){
+			this.children.appendChild(c.nodes[0]);
+		}
+
+	}
+
+	private function removeAll(){
+		if(this.children.hasChildNodes()){
+			this.children.removeChild(this.children.firstChild);
+			this.removeAll();
+		}
+	}
+
 }

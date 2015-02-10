@@ -1,120 +1,217 @@
 package rize.model;
 
+import mlkcca.DataStore;
+import haxe.Serializer;
+import haxe.Unserializer;
+import haxe.Http;
+import haxe.Json;
+import haxe.Template;
+using Kanban.StateUtil;
 
 enum State{
 	Regist;
 	Work;
 	Finish;
-	Undifine;
 }
 
-class Kanban{
-	public var start:Date;
-	public var end:Date;
+typedef KanbanOptionalField =  {
+	?startDate:Date, 
+	?endDate:Date, 
+	?entryDate:Date,
+	?state:State,
+	?wip:String,
+	?id:String,
+	?developer:Developer
+};
+
+typedef SerializedObject = {
+	id:String,
+	title:String,
+	author:String,
+	state:State,
+	comment:String,
+	entryDate:Date,
+	?developer:Developer,
+	?startDate:Date,
+	?endDate:Date,
+	?wip:String
+}
+
+class StateUtil{
+	public static function toState(string:String) : State {
+		return switch(string){
+			case "regist" : Regist;
+			case "work" : Work;
+			case "Finish" : Finish;
+			case _ : throw "this string " + string +  "can't change state" ;
+		}
+	}
+
+	public static function toString(state:State){
+		return switch(state){
+			case Regist : "regist";
+			case Work : "work";
+			case Finish : "finish";
+		}
+	}
+
+}
+
+
+class Kanban extends Model{
+	private var dataStore : DataStore;
+	public var id : String;
 	public var title:String;
-	public var auth:String;
-	public var entry:Date;
+	public var author:String;
 	public var state:State;
-	public var id:String;
+	public var comment:String;
+	public var developer:Developer;
+	public var wip:String;
 
-	public static function restore(data:Dynamic){
-		trace(data);
-		var res = new Kanban(data.title);
-		res.start = data.start;
-		res.end = data.end;
-		res.auth = data.auth;
-		res.entry = data.entry;
-		res.state = stateInt(data.state[0]);
-		res.id = data.id;
-		return res;
-	}
+	public var startDate(default, null):Date;
+	public var endDate(default, null):Date;
+	public var entryDate(default, null):Date;
 
-	public function new(title:String,?auth:rize.model.Developer){
-		this.entry = Date.now();
+
+	public function new(dataStore:DataStore,title:String, comment:String, author:String, ?options : KanbanOptionalField){
 		this.title = title;
-		this.state = State.Regist;
-		this.auth  = "undefine";
-	}
+		this.comment = comment;
+		this.author  = author;
+		this.dataStore = dataStore;
 
-	public function work()
-		return if(this.state == State.Regist){
-			this.start = Date.now();
-			this.state = State.Work;
-			true;
-		}else false;
-
-	public function isWork(){
-		return State.Work == this.state;
-	}
-
-	public function finish()
-		return if(this.state == State.Work){
-			this.end = Date.now();
-			this.state = State.Finish;
-			true;
-		}else false;
-	
-
-	public function isFinish(){
-		return State.Finish == this.state;
-	}
-
-	public function caluculateWip(){
-		return DateTools.hours(Math.abs( start.getTime()-end.getTime() ) );
-	}
-
-	public function stateString(){
-		if(state == State.Regist){
-			return "Regist";
-		}else if(state == State.Finish){
-			return "Finish";
-		}else if(state == State.Work){
-			return "Work";
+		if( options != null ){
+			this.id = options.id;
+			this.developer = options.developer;
+			this.state = options.state;
+			this.wip = options.wip;
+			this.entryDate = options.entryDate;
+			this.startDate = options.startDate;
+			this.endDate = options.endDate;
 		}
-		return "Err";
-	}
-	
-	public static function stateInt(s:String){
-		if(s == "Regist"){
-			return State.Regist;
-		}else if(s == "Finish"){
-			return State.Finish;
-		}else if(s == "Work"){
-			return State.Work;
-		}
-		return State.Undifine;
+
+		if( this.id == null )
+			this.id = Std.string(Date.now().getTime()) + Std.string(Std.random(10000));
+
+		if( this.entryDate == null )
+			this.entryDate = Date.now();
+
+		if( this.state == null )
+			this.state = State.Regist;
 	}
 
-	public function toNextState(){
-		if(state == State.Regist){
-			state = State.Work;
-		}else{
-			state = State.Finish;
-		}
+	public function getSerialized() : String{
+		var serializer = new Serializer();
+		var seralizedObject : SerializedObject = {
+			id:this.id,
+			title:this.title,
+			author:this.author,
+			developer:this.developer,
+			state:this.state,
+			comment:this.comment,
+			entryDate:this.entryDate,
+			startDate:this.startDate,
+			endDate:this.endDate,
+			wip:this.wip
+		};
+		serializer.serialize(seralizedObject);
+		return serializer.toString();
 	}
 
-	public function getEntryString(){
-		if(entry == null){
-			return "undefine";
-		}else{
-			return Std.string(entry);
-		}
+	public static function unserialized(string:String){
+		var unserializer = new Unserializer(string);
+		return unserializer.unserialize();
 	}
 
-	public function getStartString(){
-		if(start == null){
-			return "undefine";
-		}else{
-			return Std.string(start);
-		}
+	public static function toKanban(dataStore,object:SerializedObject){
+		return new Kanban(dataStore,object.title,object.comment,object.author,
+		{
+			id : object.id,
+			developer : object.developer,
+			state : object.state,
+			entryDate : object.entryDate,
+			startDate : object.startDate,
+			endDate : object.endDate,
+			wip : object.wip
+		});
 	}
 
-	public function getEndString(){
-		if (end == null){
-			return "undefine";
-		}else{
-			return Std.string(end);
-		}
+	public function set(data : SerializedObject){
+		this.title = data.title;
+		this.author = data.author;
+		this.comment = data.comment;
+		this.developer = data.developer;
+		this.state = data.state;
+		this.entryDate = data.entryDate;
+		this.endDate = data.endDate;
+		this.startDate = data.startDate;
+		this.wip = data.wip;
+		this.changed();
 	}
 
+	public function save(){
+		this.dataStore.set(this.id,{kanban:this.getSerialized()});
+		#if dev
+		trace("slackでPostするはず!");
+		#else 
+		this.slackPost();
+		#end
+	}
+
+	private function slackPost(){
+		var http = new Http(rize.Main.config.slack.url);
+		http.setPostData(this.getSlackPostText());
+		http.setHeader( "Content-Type", "application/x-www-form-urlencoded" );
+		http.request(true);
+	}
+
+	private function getSlackPostText(){
+		var template  = new Template( 
+"カンバンが更新されました。
+タイトル : ::title:: 
+作成者 : ::author::
+状態 : ::state::
+url : <http://kanban-technicalrockstars.bitballoon.com|rizeへ>");
+		var string = template.execute({
+			title : this.title,
+			comment : this.comment,
+			author : this.author,
+			state : this.state.toString()
+			});
+		var json = {
+			text : string,
+			channel: rize.Main.config.slack.channel,
+			username: rize.Main.config.slack.url
+		};
+		return "payload=" + Json.stringify(json);
+	}
+
+
+	public function setDeveloper(name:String){
+		this.developer = new Developer(name);
+	}
+
+	public function nextState(){
+		switch(this.state){
+			case Regist : this.work();
+			case Work : this.finish(); 
+			case _ : 
+		}
+		this.save();
+	}
+
+	private function work(){
+		this.startDate = Date.now();
+		this.state = State.Work;
+
+	}
+
+	private function finish(){
+		this.endDate = Date.now();
+		this.state = State.Finish;
+		this.wip = Std.string(this.caluculateWip());
+	}
+
+	private function caluculateWip(){
+		return this.endDate.getTime() - this.startDate.getTime();
+	}
 }
