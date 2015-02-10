@@ -16,10 +16,14 @@ class DeveloperForm{}
 "package rize.view.kanban;
 
 dt,dd {
-	color: #999;
+	color: #bbb;
 }
 .title, .developer{
 	color: #222;
+	font-weigth: bold;
+}
+.comment{
+	color: #555;
 }
 
 "))
@@ -30,7 +34,7 @@ dt,dd {
 	<dt>カンバン名</dt>
 	<dd class='title'>{{title}}</dd>
 	<dt>詳細</dt>
-	<dd>{{comment}}</dd>
+	<dd class='comment'>{{comment}}</dd>
 	<dt>作成者</dt>
 	<dd>{{author}}</dd>
 	<dt>開発者</dt>
