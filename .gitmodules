@@ -1,0 +1,3 @@
+[submodule "rize-conf"]
+	path = rize-conf
+	url = git@bitbucket.org:technicalrockstars/rize-conf.git
