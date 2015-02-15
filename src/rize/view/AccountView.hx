@@ -10,15 +10,15 @@ import rize.controller.AccountController;
 <div>
 	<dl>
 		<dt>email</dt>
-		<dd><input type=text mage-var=email /></dd>
+		<dd><input(email) type=text /></dd>
 		<dt>password</dt>
-		<dd><input type=password mage-var=pass ></dd>
+		<dd><input(pass) type=password  ></dd>
 		<dt>comfirm</dt>
-		<dd><input type=password mage-var=confirm ></dd>
+		<dd><input(confirm) type=password ></dd>
 		<dt>username</dt>
-		<dd><input type=text mage-var=username/></dd>
+		<dd><input(username) type=text /></dd>
 
-		<button mage-var=submitBtn>送信</button>
+		<button(submitBtn)>送信</button>
 	</dl>
 </div>"
 ))
@@ -30,11 +30,11 @@ class SignUp{}
 <div>
 	<dl>
 		<dt>email</dt>
-		<dd><input type=text mage-var=email /></dd>
+		<dd><input(email) type=text /></dd>
 		<dt>password</dt>
-		<dd><input type=password mage-var=pass ></dd>
+		<dd><input(pass) type=password ></dd>
 
-		<button mage-var=submitBtn>送信</button>
+		<button(submitBtn) >送信</button>
 	</dl>
 </div>"
 ))
@@ -45,8 +45,8 @@ class SignIn{}
 
 <div>
 
-	<div mage-var=signup></div>
-	<div mage-var=signin></div>
+	<div(signup) ></div>
+	<div(signin) ></div>
 </div>"
 ))
 class NoLoginedViewFrame{}
@@ -69,10 +69,10 @@ class NoLoginedView extends NoLoginedViewFrame{
 "package rize.view
 
 <div>
-	<button mage-var=logoutBtn>ログアウト</button>
-	<input type=text mage-var=tokentext />
-	<button mage-var=tokenbtn>トークンをセットする</button>
-	<div mage-var=child></div>
+	<button(logoutBtn)>ログアウト</button>
+	<input(tokentext) type=text />
+	<button(tokenbtn)>トークンをセットする</button>
+	<div(child)></div>
 </div>
 "
 ))
@@ -91,7 +91,7 @@ class LoginedView<T:ContentView> extends LoginedViewFrame{
 "package rize.view
 
 <div>
-	<div mage-var=render></div>
+	<div(render)></div>
 </div>"
 ))
 class AccountViewFrame{}

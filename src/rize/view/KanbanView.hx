@@ -8,7 +8,7 @@ using rize.model.Kanban.StateUtil;
 @:build(mage.CompileHTML.generate(
 'package rize.view.kanban;
 
-<input type="text" mag-var=input/>'
+<input(input) type="text">'
 ))
 class DeveloperForm{}
 
@@ -18,24 +18,24 @@ class DeveloperForm{}
 	
 <dl>
 	<dt>カンバン名</dt>
-	<dd>{{title}}</dd>
+	<dd>{title}</dd>
 	<dt>詳細</dt>
-	<dd>{{comment}}</dd>
+	<dd>{comment}</dd>
 	<dt>作成者</dt>
-	<dd>{{author}}</dd>
+	<dd>{author}</dd>
 	<dt>開発者</dt>
-	<dd><input type='text' mage-var=developer/></dd>
+	<dd><input(developer) type='text' /></dd>
 	<dt>状態</dt>
-	<dd>{{state}}</dd>
+	<dd>{state}</dd>
 	<dt>登録時</dt>
-	<dd>{{entryDate}}</dd>
+	<dd>{entryDate}</dd>
 	<dt>着手時</dt>
-	<dd>{{startDate}}</dd>
+	<dd>{startDate}</dd>
 	<dt>完了時</dt>
-	<dd>{{endDate}}</dd>
+	<dd>{endDate}</dd>
 	<dt>WIP</dt>
-	<dd>{{wip}}</dd>
-	<button mage-var=updateBtn>更新</button>
+	<dd>{wip}</dd>
+	<button(updateBtn)>更新</button>
 </dl>"
 ))
 class KanbanView{
