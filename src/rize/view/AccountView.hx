@@ -67,6 +67,7 @@ typedef ContentView = { nodes : Array<js.html.Node> }
 "package rize.view
 
 <div>
+	<p>ログイン中です</p>
 	<button(logoutBtn)>ログアウト</button>
 	<input(tokentext) type=text />
 	<button(tokenbtn)>トークンをセットする</button>
