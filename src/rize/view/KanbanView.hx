@@ -15,30 +15,35 @@ class DeveloperForm{}
 @:build(mage.CompileCSS.generate(
 "package rize.view.kanban;
 
-dt,dd {
+dt{
 	color: #bbb;
 }
-.title, .developer{
+dd{
+	color: #bbb;
+}
+.title{
 	color: #222;
-	font-weigth: bold;
+	font-weight: bold;
+}
+.developer{
+	color: #222;
+	font-weight: bold;
 }
 .comment{
 	color: #555;
-}
-
-"))
+}"))
 @:build(mage.CompileHTML.generate(
 "package rize.view.kanban;
 
 <dl>
 	<dt>カンバン名</dt>
-	<dd class='title'>{{title}}</dd>
+	<dd class=title>{{title}}</dd>
 	<dt>詳細</dt>
-	<dd class='comment'>{{comment}}</dd>
+	<dd class=comment>{{comment}}</dd>
 	<dt>作成者</dt>
 	<dd>{{author}}</dd>
 	<dt>開発者</dt>
-	<dd class='developer'><input type='text' mage-var=developer/></dd>
+	<dd class=developer><input type='text' mage-var=developer/></dd>
 	<dt>状態</dt>
 	<dd>{{state}}</dd>
 	<dt>登録時</dt>
