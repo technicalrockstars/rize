@@ -170,7 +170,7 @@ class Kanban extends Model{
 タイトル : ::title:: 
 作成者 : ::author::
 状態 : ::state::
-url : <http://kanban-technicalrockstars.bitballoon.com|rizeへ>");
+url : <http://rize-kanban.mlkcca-app.com|rizeへ>");
 		var string = template.execute({
 			title : this.title,
 			comment : this.comment,
