@@ -36,16 +36,13 @@ class ChildView{
 
 </div>"
 ))
-class KanbanTableFrame{}
-
-class KanbanTableView extends KanbanTableFrame{
+class KanbanTableView {
 	private var model : KanbanCollection = null;
 	private var controller : KanbanTableController;
 	public var submitButton : js.html.ButtonElement;
 	public var form : KanbanFormView;
 
 	public function new(){
-		super();
 		this.form = new KanbanFormView();
 		this.inputform.appendChild(form.nodes[0]);
 		this.submitButton = form.updateBtn;
