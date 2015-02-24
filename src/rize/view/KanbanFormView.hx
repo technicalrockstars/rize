@@ -5,18 +5,18 @@ package rize.view;
 
 <div>
 	<dt>カンバン名(必須)</dt>
-	<dd><input type="text" mage-var=name /></dd>
+	<dd><input(name) type="text"></dd>
 
 	<dt>詳細(必須)</dt>
-	<dd><textarea name="" id="" cols="30" rows="10" mage-var=comment></textarea></dd>
+	<dd><textarea(comment) name="" id="" cols="30" rows="10" ></textarea></dd>
 
 	<dt>作成者(必須)</dt>
-	<dd><input type="text" mage-var=author /></dd>
+	<dd><input(author) type="text"></dd>
 
 	<dt>開発者</dt>
-	<dd><input type="text" mage-var=developer /></dd>
+	<dd><input(developer) type="text"></dd>
 
-	<button mage-var=updateBtn>追加</button>
+	<button(updateBtn)>追加</button>
 </div>'
 ))
 class KanbanFormView{

@@ -22,6 +22,10 @@ class KanbanCollection extends Model{
 
 	private function reload(){
 		this.dataStore.query().done(function(data){
+			if(data == null ){
+				this.changed();
+				return;
+			}
 			this.col = data.map(function(d){
 				var serializedObject = Kanban.unserialized(d.kanban);
 				return Kanban.toKanban(this.dataStore,serializedObject);

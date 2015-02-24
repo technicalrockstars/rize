@@ -9,15 +9,15 @@ import rize.controller.AccountController;
 <div>
 	<dl>
 		<dt class=strong>email</dt>
-		<dd><input type=text mage-var=email /></dd>
+		<dd><input(email) type=text /></dd>
 		<dt>password</dt>
-		<dd><input type=password mage-var=pass ></dd>
+		<dd><input(pass) type=password  ></dd>
 		<dt>comfirm</dt>
-		<dd><input type=password mage-var=confirm ></dd>
+		<dd><input(confirm) type=password ></dd>
 		<dt>username</dt>
-		<dd><input type=text mage-var=username/></dd>
+		<dd><input(username) type=text /></dd>
 
-		<button mage-var=submitBtn>送信</button>
+		<button(submitBtn)>送信</button>
 	</dl>
 </div>"
 ))
@@ -29,11 +29,11 @@ class SignUp{}
 <div>
 	<dl>
 		<dt>email</dt>
-		<dd><input type=text mage-var=email /></dd>
+		<dd><input(email) type=text /></dd>
 		<dt>password</dt>
-		<dd><input type=password mage-var=pass ></dd>
+		<dd><input(pass) type=password ></dd>
 
-		<button mage-var=submitBtn>送信</button>
+		<button(submitBtn) >送信</button>
 	</dl>
 </div>"
 ))
@@ -44,44 +44,38 @@ class SignIn{}
 
 <div>
 
-	<div mage-var=signup></div>
-	<div mage-var=signin></div>
+	<div(signup) ></div>
+	<div(signin) ></div>
 </div>"
 ))
-class NoLoginedViewFrame{}
-
-
-class NoLoginedView extends NoLoginedViewFrame{
+class NoLoginedView{
 	public var signInView: SignIn;
 	public var signUpView : SignUp;
 
 	public function new(){
-		super();
 		this.signInView = new SignIn();
 		this.signUpView = new SignUp();
-		this.signin.appendChild(this.signInView.nodes[0]);
-		this.signup.appendChild(this.signUpView.nodes[0]);
+		this.signin.appendChild(this.signInView.root);
+		this.signup.appendChild(this.signUpView.root);
 	}
 }
+
+typedef ContentView = { nodes : Array<js.html.Node> }
 
 @:build(mage.CompileHTML.generate(
 "package rize.view
 
 <div>
-	<button mage-var=logoutBtn>ログアウト</button>
-	<input type=text mage-var=tokentext />
-	<button mage-var=tokenbtn>トークンをセットする</button>
-	<div mage-var=child></div>
+	<p>ログイン中です</p>
+	<button(logoutBtn)>ログアウト</button>
+	<input(tokentext) type=text />
+	<button(tokenbtn)>トークンをセットする</button>
+	<div(child)></div>
 </div>
 "
 ))
-class LoginedViewFrame{}
-
-typedef ContentView = { nodes : Array<js.html.Node> }
-
-class LoginedView<T:ContentView> extends LoginedViewFrame{
+class LoginedView<T:ContentView> {
 	public function new(contentView:T){
-		super();
 		this.child.appendChild(contentView.nodes[0]);
 	}
 }
@@ -90,19 +84,16 @@ class LoginedView<T:ContentView> extends LoginedViewFrame{
 "package rize.view
 
 <div>
-	<div mage-var=render></div>
+	<div(render)></div>
 </div>"
 ))
-class AccountViewFrame{}
-
-class AccountView<T:ContentView> extends AccountViewFrame{
+class AccountView<T:ContentView>{
 	public var model : Account;
 	public var nologinedView : NoLoginedView;
 	public var loginedView :  LoginedView<T>;
 
 
 	public function new(model, contentView : T){
-		super();
 		this.model = model;
 		this.nologinedView = new NoLoginedView();
 		this.loginedView = new LoginedView(contentView);

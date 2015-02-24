@@ -14,8 +14,8 @@ import rize.controller.KanbanTableController;
 @:build(mage.CompileHTML.generate(
 "package rize.view.kanban.child;
 
-<div class=record mage-var=content>
-	<button mage-var=removeBtn>削除</button>
+<div(content) class=record>
+	<button(removeBtn)>削除</button>
 </div>"
 ))
 class ChildView{
@@ -26,26 +26,23 @@ class ChildView{
 "package rize.view
 
 <div>
-	<div mage-var=inputform></div>
-	<div mage-var=radio>
+	<div(inputform)></div>
+	<div(radio)>
 		<input type=radio name=state value=regist checked=true>regist
 		<input type=radio name=state value=work>work
 		<input type=radio name=state value=finish>finish
 	</div>
-	<div mage-var=children></div>
+	<div(children)></div>
 
 </div>"
 ))
-class KanbanTableFrame{}
-
-class KanbanTableView extends KanbanTableFrame{
+class KanbanTableView {
 	private var model : KanbanCollection = null;
 	private var controller : KanbanTableController;
 	public var submitButton : js.html.ButtonElement;
 	public var form : KanbanFormView;
 
 	public function new(){
-		super();
 		this.form = new KanbanFormView();
 		this.inputform.appendChild(form.nodes[0]);
 		this.submitButton = form.updateBtn;

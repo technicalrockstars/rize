@@ -18,6 +18,7 @@ class Account extends Model{
 			}
 			this.changed();
 		});
+		this.changed();
 	}
 
 	public function signIn(email : String, password : String){
